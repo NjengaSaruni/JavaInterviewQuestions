@@ -19,7 +19,45 @@ public class HelloWorld {
         return sequence;
     }
 
+    private static int vampireNumbers(){
+        int limit = 10000;
+        int sqrt = 100;
+
+        for(int i = 0; i < limit; i++){
+            int lhs = i / sqrt;
+            int lhsi = (lhs % 10) * 10 + (lhs / 10);
+            int rhs = i % sqrt;
+            int rhsi = (rhs % 10) * 10 + (rhs / 10);
+            String output = String.format("%d: %d %d %d %d", i, lhs, lhsi, rhs, rhsi);
+            System.out.println(output);
+
+
+    /*        if(lhs * rhs  == i) {
+                System.out.println("Found");
+                System.out.println(lhs);
+                System.out.println(rhs);
+            }
+            if(lhs * rhsi == i){
+                System.out.println("Found");
+                System.out.println(lhs);
+                System.out.println(rhsi);
+            }
+            if(lhsi * rhs == i) {
+                System.out.println("Found");
+                System.out.println(lhsi);
+                System.out.println(rhs);
+            }if(lhsi * rhsi == i){
+                System.out.println("Found");
+                System.out.println(lhsi);
+                System.out.println(rhsi);
+            }*/
+        }
+
+        return 0;
+
+    }
+
     public static void main(String[] args) {
-        System.out.println(HelloWorld.fibonacci(7));
+        System.out.println(HelloWorld.vampireNumbers());
     }
 } ///:~

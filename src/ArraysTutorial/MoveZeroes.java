@@ -33,8 +33,8 @@ public class MoveZeroes {
 
     public static void moveZeroes(int[] nums) {
         for(int i = 0; i < nums.length - 1; i ++){
-            if(nums[i] == 0){
-                for(int j = i; j < nums.length - 1; j++){
+            if(nums[i + 1] == 0){
+                for(int j = i - 1; j < nums.length - 1; j++){
                     int hold = nums[j];
                     nums[j] = nums[j + 1];
                     nums[j + 1] = hold;

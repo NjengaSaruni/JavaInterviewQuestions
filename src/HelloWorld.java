@@ -32,7 +32,7 @@ public class HelloWorld {
             System.out.println(output);
 
 
-    /*        if(lhs * rhs  == i) {
+            if(lhs * rhs  == i) {
                 System.out.println("Found");
                 System.out.println(lhs);
                 System.out.println(rhs);
@@ -50,7 +50,7 @@ public class HelloWorld {
                 System.out.println("Found");
                 System.out.println(lhsi);
                 System.out.println(rhsi);
-            }*/
+            }
         }
 
         return 0;
@@ -58,6 +58,12 @@ public class HelloWorld {
     }
 
     public static void main(String[] args) {
-        System.out.println(HelloWorld.vampireNumbers());
+        ArrayTrial trial = new ArrayTrial("This is the name");
+    }
+
+    private static class ArrayTrial {
+        ArrayTrial(String trialName){
+            System.out.print(trialName);
+        }
     }
 } ///:~

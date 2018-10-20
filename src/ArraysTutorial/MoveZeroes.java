@@ -84,7 +84,10 @@ public class MoveZeroes {
             if(nums[i] == 0){
                 if(i < nums.length - 1){
                     int j = i;
-                    while(nums[j + 1] != 0){
+                    while(j < nums.length - 1){
+                        if(nums[j + 1] == 0){
+                            break;
+                        }
                         int hold = nums[j];
                         nums[j] = nums[j + 1];
                         nums[j + 1] = hold;
@@ -99,7 +102,7 @@ public class MoveZeroes {
     }
 
     public static void main(String[] args){
-       moveZeroesPablo(new int[]{0, 3, 8, 9, 0, 5, 6, 0, 8, 0});
-       moveZeroes(new int[]{0, 1});
+       moveZeroesPablo(new int[]{0, 0, 1});
+//       moveZeroes(new int[]{0,1,0,3,12});
     }
 }

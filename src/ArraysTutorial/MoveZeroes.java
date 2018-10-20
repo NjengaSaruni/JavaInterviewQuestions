@@ -19,6 +19,35 @@
         [1,  0, 3, 12, 0]
              *
         [12, 1, 0, 3, 0]
+
+
+        [0, 3, 8, 9, 0, 5, 6, 0, 8, 0]
+
+        [3, 0, 8, 9, 0, 5, 6, 0, 8, 0]
+
+        [3, 8, 0, 9, 0, 5, 6, 0, 8, 0]
+
+        [3, 8, 9, 0, 0, 5, 6, 0, 8, 0]
+
+
+        [0, 3, 8, 9, 0, 5, 6, 0, 8, 0]
+
+        [0, 3, 8, 9, 0, 5, 6, 0, 8, 0]
+
+        [0, 3, 8, 9, 0, 5, 6, 8, 0, 0]
+
+        [3, 8, 9, 5, 6, 8, 0, 0, 0, 0]
+
+
+
+
+
+
+
+    public static void main(String[] args){
+       moveZeroes(new int[]{0, 3, 5, 6, 0, 8});
+    }
+
                 *
         [12, 1, 3, 0, 0]
 
@@ -32,13 +61,37 @@ import java.util.Arrays;
 public class MoveZeroes {
 
     public static void moveZeroes(int[] nums) {
+        int currentEnd = nums.length - 1;
+
         for(int i = 0; i < nums.length - 1; i ++){
-            if(nums[i + 1] == 0){
-                for(int j = i - 1; j < nums.length - 1; j++){
+            if(nums[i] == 0){
+                for(int j = i; j < currentEnd; j ++){
                     int hold = nums[j];
                     nums[j] = nums[j + 1];
                     nums[j + 1] = hold;
                 }
+                currentEnd--;
+            }
+        }
+
+        System.out.print(Arrays.toString(nums));
+    }
+
+
+
+    public static void moveZeroesPablo(int[] nums) {
+        for(int i = nums.length - 1; i >= 0; i --){
+            if(nums[i] == 0){
+                if(i < nums.length - 1){
+                    int j = i;
+                    while(nums[j + 1] != 0){
+                        int hold = nums[j];
+                        nums[j] = nums[j + 1];
+                        nums[j + 1] = hold;
+                        j++;
+                    }
+                }
+
             }
         }
 
@@ -46,6 +99,7 @@ public class MoveZeroes {
     }
 
     public static void main(String[] args){
-       moveZeroes(new int[]{0, 3, 5, 6, 0, 8});
+       moveZeroesPablo(new int[]{0, 3, 8, 9, 0, 5, 6, 0, 8, 0});
+       moveZeroes(new int[]{0, 1});
     }
 }

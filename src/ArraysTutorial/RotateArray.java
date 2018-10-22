@@ -108,11 +108,13 @@ import java.util.Arrays;
 public class RotateArray {
     public static void rotate(int[] nums, int k) {
         int hold;
+        k = nums.length % k;
         for(int i = nums.length -k, j = 0; j < k; i++, j++){
             hold = nums[i];
             nums[i] = nums[j];
             nums[j] = hold;
         }
+
         int left = k;
         for(int right = nums.length - k; right < nums.length; right++){
             hold = nums[left];
@@ -128,6 +130,8 @@ public class RotateArray {
                 left++;
             }
         }
+
+
         System.out.print(Arrays.toString(nums));
     }
 

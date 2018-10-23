@@ -59,6 +59,7 @@ public class SpiralMatrix {
 
             }
 
+            // Step riiiight
             while(col < right){
                 col++;
                 value++;
@@ -72,7 +73,7 @@ public class SpiralMatrix {
         return matrix;
     }
     public static void main(String[] args){
-        for(int[] array: spiral(9)){
+        for(int[] array: spiral(5)){
             System.out.println(Arrays.toString(array));
         }
     }

@@ -1,3 +1,30 @@
+/*
+ * Thought process
+ *
+ * [2,4,6,5,66,453,2,7,88,5]
+ *
+ * Step 1
+ * i <- 1;
+ *
+ * while i < length(array)
+ *       toInsert <- array[i]            int toInsert = array[1] = 15
+ *                                       [17,15,7,3,66,453,2,7,88,5]
+ *       j <- i - 1                      0
+ *       while(j >= 0)
+ *           if(array[j] >= toInsert])
+ *               array[j + 1] = array[j]
+ *           else
+ *               j <- j + 1
+ *               break
+ *           j <- j - 1
+ *
+ *       array[j] <- toInsert
+ *
+ *       i <- i + 1
+ *
+ *
+ *
+ * */
 package Sorting;
 
 import java.util.Arrays;
@@ -6,37 +33,28 @@ public class InsertionSort {
 
     public static void sort(int[] array){
         System.out.println(Arrays.toString(array));
-        for(int i = 1; i < array.length; i++){
+
+        int i = 1;
+
+        while(i < array.length){
+
             int toInsert = array[i];
-            System.out.printf("Iteration %d to insert %d\n", i, toInsert);
             int j = i - 1;
-            while(j >= 0 && array[j] > toInsert){
-                System.out.printf("Shift %d from %d to %d -> \t\t", array[j], j , j+ 1);
+
+            while(j >= 0 && array[j] >= toInsert) {
                 array[j + 1] = array[j];
-                System.out.printf("%s\t\t",Arrays.toString(array));
-                System.out.printf("Carry value is %d\n", toInsert);
-
-                if(j > 0){
-                    j--;
-                }
-                else{
-                    break;
-                }
-            }
-            if( j < i - 1){
-                System.out.printf("Finally insert %d in hole %d\t\t", toInsert, j);
-                array[j] = toInsert;
-            }else{
-                System.out.printf("No insertion necessary\t\t\t");
+                j--;
             }
 
-            System.out.printf("%s\n\n", Arrays.toString(array));
-
+            array[j + 1] = toInsert;
+            System.out.println(Arrays.toString(array));
+            i++;
         }
+
     }
 
     public static void main(String[] args){
-        int[] array = new int[]{17,15,7,3,66,453,2,7,88,5};
+        int[] array = new int[]{17,15,711,13,66,453,2,7,88,5};
         sort(array);
 
         System.out.println(Arrays.toString(array));

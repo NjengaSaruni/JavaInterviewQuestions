@@ -7,11 +7,21 @@
 
 package Sorting;
 
+import org.junit.Assert;
+import org.junit.Test;
+
 import java.util.*;
 
 public class QuickSort {
+    @Test
+    public void test() {
+        int[] array = new int[]{8,4,3,5,1,2,0,3};
+        sort(array, 0, array.length -  1);
+        System.out.println(Arrays.toString(array));
+
+        Assert.assertArrayEquals(array, new int[]{0,1,2,3,3,4,5,8});
+    }
     private static void sort(int[] array, int left, int right){
-        System.out.printf("%s\n", Arrays.toString(array));
         if(left >= right){
             return;
         }

@@ -25,14 +25,12 @@ public class MergeSort {
         int[] right = Arrays.copyOfRange(array, array.length / 2, array.length);
         int[] answer = new int[array.length];
 
-        System.out.printf("Left:\t\t %s\n", Arrays.toString(left));
-        System.out.printf("Right:\t\t %s\n", Arrays.toString(right));
+        left = sort(left);
+        right = sort(right);
 
         int l = 0;
         int r = 0;
         int i = 0;
-        left = sort(left);
-        right = sort(right);
         while (l < left.length && r < right.length) {
             if (left[l] < right[r]) {
                 answer[i] = left[l];
@@ -43,12 +41,12 @@ public class MergeSort {
             }
             i++;
         }
-        while(l < left.length){
+        while (l < left.length) {
             answer[i] = left[l];
             l++;
             i++;
         }
-        while(r < right.length){
+        while (r < right.length) {
             answer[i] = right[r];
             r++;
             i++;
@@ -60,13 +58,9 @@ public class MergeSort {
 
 
     }
-    public static void main(String[] args){
-        int[] array = new int[]{1, 4,6,2,66,2,10909,66,80,76};
-        sort(array);
-        System.out.println(Arrays.toString(sort(array)));
-    }
 
-    MergeSort(){
-        System.out.println("Called constructor");
+    public static void main(String[] args) {
+        int[] array = new int[]{1, 4, 6, 2, 66, 2, 10909, 66, 80, 76};
+        System.out.println(Arrays.toString(sort(array)));
     }
 }

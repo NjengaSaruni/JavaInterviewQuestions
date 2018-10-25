@@ -10,16 +10,12 @@
  *       toInsert <- array[i]            int toInsert = array[1] = 15
  *                                       [17,15,7,3,66,453,2,7,88,5]
  *       j <- i - 1                      0
- *       while(j >= 0)
- *           if(array[j] >= toInsert])
- *               array[j + 1] = array[j]
- *           else
- *               j <- j + 1
- *               break
+ *       while(j >= 0 && array[j] >= toInsert])
+ *
+ *           array[j + 1] = array[j]
  *           j <- j - 1
  *
- *       array[j] <- toInsert
- *
+ *       array[j + 1] <- toInsert
  *       i <- i + 1
  *
  *

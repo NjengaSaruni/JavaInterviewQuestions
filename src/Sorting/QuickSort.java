@@ -14,7 +14,7 @@ import java.util.*;
 
 public class QuickSort {
     @Test
-    public void test() {
+    public static void test() {
         int[] array = new int[]{8,4,3,5,1,2,0,3};
         sort(array, 0, array.length -  1);
         System.out.println(Arrays.toString(array));
@@ -49,9 +49,7 @@ public class QuickSort {
     }
 
     public static void main(String[] args){
-        int[] array = new int[]{8,4,3,5,1,2,0,3};
-        sort(array, 0, array.length -  1);
-        System.out.println(Arrays.toString(array));
+        test();
     }
 
 }

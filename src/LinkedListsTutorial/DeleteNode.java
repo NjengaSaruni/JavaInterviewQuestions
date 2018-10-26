@@ -32,6 +32,22 @@ public class DeleteNode {
         node.val = node.next.val;
         node.next = node.next.next;
     }
+
+    public static void insertNode(ListNode ll, int value,int position) {
+        ListNode currentNode  = ll;
+        ListNode toInsert = new ListNode(value);
+        ListNode previousNode = currentNode;
+        int i = 0;
+        while(i < position && currentNode != null){
+            previousNode = currentNode;
+            currentNode = currentNode.next;
+            i++;
+            System.out.println(currentNode);
+        }
+        toInsert.next = currentNode;
+        previousNode.next = toInsert;
+
+    }
     public static void main(String[] args){
         Random rd = new Random();
         ListNode node = new ListNode(9);
@@ -45,7 +61,9 @@ public class DeleteNode {
             }
             current = current.next;
         }
-        deleteNode(toDelete);
+//        insertNode(node, 9, 3);
+        insertNode(node, 91, 0);
+
         System.out.println(node);
     }
 }

@@ -17,13 +17,13 @@ public class InsertionSort1 {
             }
             j++;
             array[j] = toInsert;
-            System.out.printf("j is %d\n", j);
             i++;
         }
     }
     public static void main(String[] args){
-        int[] array = new int[]{0, 1, 8, 3, 6, 2, 7, 4, 9, 5};
+        int[] array = new int[Integer.MAX_VALUE];
         sort(array);
         System.out.println(Arrays.toString(array));
-    }
+
+   }
 }

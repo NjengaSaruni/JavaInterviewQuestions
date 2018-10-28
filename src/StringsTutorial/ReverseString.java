@@ -16,7 +16,7 @@ package StringsTutorial;
 
 public class ReverseString {
     public static String reverseString(String s) {
-        if(s.length() == 0){
+        if(s.length() <= 1){
             return s;
         }
         char[] reversed = s.toCharArray();
@@ -43,6 +43,6 @@ public class ReverseString {
         return new String(reversed);
     }
     public static void main(String[] args){
-        System.out.print(reverseString(""));
+        System.out.print(reverseString("1232"));
     }
 }

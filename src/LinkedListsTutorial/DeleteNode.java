@@ -33,6 +33,20 @@ public class DeleteNode {
         node.next = node.next.next;
     }
 
+    public static void deleteDuplicates(ListNode head){
+        ListNode current = head;
+        while(current != null && current.next != null){
+            if(current.val == current.next.val){
+                if(current.next.next != null){
+                    current.next.val = current.next.next.val;
+                }
+                current.next = current.next.next;
+            }else {
+                current = current.next;
+            }
+        }
+    }
+
     public static void insertNode(ListNode ll, int value,int position) {
         ListNode currentNode  = ll;
         ListNode toInsert = new ListNode(value);
@@ -44,6 +58,7 @@ public class DeleteNode {
             i++;
             System.out.println(currentNode);
         }
+
         toInsert.next = currentNode;
         previousNode.next = toInsert;
 
@@ -56,14 +71,15 @@ public class DeleteNode {
         ListNode toDelete = new ListNode(10);
         for(int i = 0; i < 6; i++){
             current.next = new ListNode(i);
-            if(i == 3){
-                toDelete = current;
-            }
             current = current.next;
         }
-//        insertNode(node, 9, 3);
-        insertNode(node, 91, 0);
+        for(int i = 0; i < 6; i++){
+            current.next = new ListNode(6);
+            current = current.next;
+        }
 
+        System.out.println(node);
+        deleteDuplicates(node);
         System.out.println(node);
     }
 }

@@ -3,10 +3,13 @@
 * 3,5*/
 package Sorting;
 
+import org.junit.Assert;
+import org.junit.Test;
+
 import java.util.Arrays;
 
 public class BubbleSort {
-    private static void sort(int[] array){
+    public static void sort(int[] array){
         for(int i = 0; i < array.length; i++){
             for(int j = 0; j < array.length - 1; j++){
                 if(array[j] > array[j + 1]){
@@ -18,8 +21,18 @@ public class BubbleSort {
         }
     }
     public static void main(String[] args){
-        int[] array = new int[]{1,4,3,5,2,5,6,3};
-        sort(array);
-        System.out.println(Arrays.toString(array));
+        TestBubble.main(new String[] {""});
+    }
+}
+
+
+class TestBubble {
+
+    @Test
+    public static void main(String[] args){
+        Arrays.bina
+        int[][] array = new int[][]{new int[]{1,3,4},new int[]{1,3,2}};
+//        BubbleSort.sort(array);
+        Assert.assertArrayEquals(array, new int[][]{new int[]{1,3,4},new int[]{1,3,2}});
     }
 }

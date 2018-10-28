@@ -23,11 +23,11 @@ public class MergeSort {
         }
         int[] left = Arrays.copyOfRange(array, 0, array.length / 2);
         int[] right = Arrays.copyOfRange(array, array.length / 2, array.length);
-        int[] answer = new int[array.length];
 
         left = sort(left);
         right = sort(right);
 
+        int[] answer = new int[array.length];
         int l = 0;
         int r = 0;
         int i = 0;

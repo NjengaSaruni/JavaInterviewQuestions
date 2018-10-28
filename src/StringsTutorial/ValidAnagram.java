@@ -40,7 +40,7 @@ public class ValidAnagram {
         char[] schars = s.toCharArray();
         char[] tchars = t.toCharArray();
 
-        Map<Character, Integer> map = new HashMap<Character, Integer>();
+        Map<Character, Integer> map = new HashMap<>();
 
         for(char value: schars){
             if(map.containsKey(value)){

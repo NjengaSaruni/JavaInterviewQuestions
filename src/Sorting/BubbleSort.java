@@ -30,7 +30,6 @@ class TestBubble {
 
     @Test
     public static void main(String[] args){
-        Arrays.bina
         int[][] array = new int[][]{new int[]{1,3,4},new int[]{1,3,2}};
 //        BubbleSort.sort(array);
         Assert.assertArrayEquals(array, new int[][]{new int[]{1,3,4},new int[]{1,3,2}});

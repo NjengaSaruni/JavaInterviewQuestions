@@ -25,7 +25,6 @@ public class Easy88MergeSortedArray {
             }else if(n - 1 < 0){
                 nums1[i] = nums1[m - 1];
                 n--;
-                z
             }
             if(nums1[m - 1] >= nums2[n - 1]){
                 nums1[i] = nums1[m];

@@ -28,3 +28,9 @@ public class Easy88MergeSortedArray {
 //        System.out.println(Arrays.toString(nums1));
     }
 }
+
+class TestMergeSort {
+    public static void main (String[] args){
+
+    }
+}

@@ -17,6 +17,9 @@ import java.util.Arrays;
 
 public class Easy88MergeSortedArray {
     public static void merge(int[] nums1, int m, int[] nums2, int n) {
+        for(int i: nums2){
+            System.out.println(i);
+        }
     }
 
     public static void main(String[] args){

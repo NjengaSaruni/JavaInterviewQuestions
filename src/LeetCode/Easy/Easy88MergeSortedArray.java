@@ -17,18 +17,35 @@ import java.util.Arrays;
 
 public class Easy88MergeSortedArray {
     public static void merge(int[] nums1, int m, int[] nums2, int n) {
-        for(int i: nums2){
+        int i = m + n - 1;
+        m--;
+        n--;
+        while( i >= 0){
             System.out.println(i);
+            if(m >= 0 && n >= 0 && nums1[m] >= nums2[n]){
+                nums1[i] = nums1[m];
+                m--;
+            }else if(m >= 0 && n >= 0 && nums1[m] < nums2[n]){
+                nums1[i] = nums2[n];
+                n--;
+            }else if(m >= 0){
+                nums1[i] = nums1[m];
+                m--;
+            }else{
+                nums1[i] = nums2[n];
+                n--;
+            }
+            i--;
         }
     }
 
     public static void main(String[] args){
-        int[] nums1 = new int[]{0, 2, 3, 4};
-        int[] nums2 = new int[]{1, 2, 6};
+        int[] nums1 = new int[]{0};
+        int[] nums2 = new int[]{1};
 
-        merge(nums1, 0 ,nums2, 3);
+        merge(nums1, 0 ,nums2, 1);
 
-//        System.out.println(Arrays.toString(nums1));
+        System.out.println(Arrays.toString(nums1));
     }
 }
 

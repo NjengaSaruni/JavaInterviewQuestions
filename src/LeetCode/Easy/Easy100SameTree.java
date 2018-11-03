@@ -34,7 +34,7 @@ package LeetCode.Easy;
 public class Easy100SameTree {
     public static boolean isSameTree(TreeNode p, TreeNode q) {
         if (p == null) return q == null;
-        if (q == null) return p == null;
+        if (q == null) return false;
         if(p.val == q.val) return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
         return false;
     }
@@ -42,10 +42,17 @@ public class Easy100SameTree {
         TreeNode t1 = new TreeNode(1);
         t1.left = new TreeNode(2);
         t1.right = new TreeNode(3);
+        t1.left.left = new TreeNode(4);
+        t1.right.left = new TreeNode(7);
+
 
         TreeNode t2  = new TreeNode(1);
         t2.left = new TreeNode(2);
         t2.right = new TreeNode(3);
+        t2.left.left = new TreeNode(4);
+        t2.right.left = new TreeNode(7);
+
+
 
         System.out.println(isSameTree(t1, t2));
     }

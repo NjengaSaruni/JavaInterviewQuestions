@@ -29,12 +29,11 @@ public class Easy53MaximumSubArray {
             }
             if(currMax > max) max = currMax;
         }
-//        System.out.println(Arrays.toString(maxes));
         return max;
     }
 
     public static void main(String[] args){
-        int[] array = new int[] {-2,1,-3,4,-1,2,1,5,4};
+        int[] array = new int[] {-2,1,6,6,-10,-10,12,-1,-3};
 
         System.out.println(maxSubArray(array));
     }

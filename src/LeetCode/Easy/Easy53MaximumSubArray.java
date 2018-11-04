@@ -11,28 +11,30 @@
 
 package LeetCode.Easy;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Arrays;
 
 public class Easy53MaximumSubArray {
     public static int maxSubArray(int[] nums) {
-        Map<Integer, Integer[]> map = new HashMap<>();
+        int max = nums[0];
         for(int i = 0; i < nums.length;  i++){
-            map.put(i, new Integer[]{i, nums[i]});
             int value = nums[i];
             int j = i + 1;
+            int currMax = value;
             while(j < nums.length){
-                int total = value + nums[j];
-                if(value < total){
-                    map.put(i, new Integer[]{j, total});
+                value = value + nums[j];
+                if(value > currMax){
+                    currMax = value;
                 }
+                j++;
             }
-          }
+            if(currMax > max) max = currMax;
         }
+//        System.out.println(Arrays.toString(maxes));
+        return max;
     }
 
     public static void main(String[] args){
-        int[] array = new int[] {-2,1,-3,4,-1,2,1,-5,4};
+        int[] array = new int[] {-2,1,-3,4,-1,2,1,5,4};
 
         System.out.println(maxSubArray(array));
     }

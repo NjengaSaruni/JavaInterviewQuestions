@@ -32,9 +32,19 @@ public class Easy53MaximumSubArray {
         return max;
     }
 
+    public static int maxSubArray2(int[] nums) {
+        int max = nums[0];
+
+        for(int i = 1; i < nums.length;  i++){
+            max += nums[i];
+        }
+        return max;
+    }
+
     public static void main(String[] args){
         int[] array = new int[] {-2,1,6,6,-10,-10,12,-1,-3};
 
         System.out.println(maxSubArray(array));
+        System.out.println(maxSubArray2(array));
     }
 }

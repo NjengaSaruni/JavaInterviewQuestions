@@ -40,6 +40,8 @@ public class Easy53MaximumSubArray {
                 sum += nums[i];
             if (sum > max)
                 max = sum;
+            System.out.printf("Sum is %d,\t\tCurrent value is %d\t\tMax is %d\n", sum, nums[i], max);
+
         }
         return max;
     }
@@ -47,7 +49,7 @@ public class Easy53MaximumSubArray {
     public static void main(String[] args){
         int[] array = new int[] {-2,1,6,6,-10,-10,12,-1,-3};
 
-        System.out.println(maxSubArray(array));
+//        System.out.println(maxSubArray(array));
         System.out.println(maxSubArray2(array));
     }
 }

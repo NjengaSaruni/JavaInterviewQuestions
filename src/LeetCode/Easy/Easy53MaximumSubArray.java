@@ -18,14 +18,13 @@ public class Easy53MaximumSubArray {
         int max = nums[0];
         for(int i = 0; i < nums.length;  i++){
             int value = nums[i];
-            int j = i + 1;
             int currMax = value;
-            while(j < nums.length){
+
+            for(int j = i + 1; j < nums.length; j++){
                 value = value + nums[j];
                 if(value > currMax){
                     currMax = value;
                 }
-                j++;
             }
             if(currMax > max) max = currMax;
         }
@@ -33,10 +32,14 @@ public class Easy53MaximumSubArray {
     }
 
     public static int maxSubArray2(int[] nums) {
-        int max = nums[0];
-
-        for(int i = 1; i < nums.length;  i++){
-            max += nums[i];
+        int max = Integer.MIN_VALUE, sum = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (sum < 0)
+                sum = nums[i];
+            else
+                sum += nums[i];
+            if (sum > max)
+                max = sum;
         }
         return max;
     }

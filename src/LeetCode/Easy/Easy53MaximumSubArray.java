@@ -11,24 +11,32 @@
 
 package LeetCode.Easy;
 
-import org.junit.Test;
+import org.junit.*;
+import junit.framework.TestCase;
+import org.junit.runner.JUnitCore;
+import org.junit.runner.Result;
+import org.junit.runner.notification.Failure;
 
 public class Easy53MaximumSubArray {
     public static int maxSubArray(int[] nums) {
-        int max = nums[0];
-        for(int i = 0; i < nums.length;  i++){
-            int value = nums[i];
-            int currMax = value;
+        try {
+            int max = nums[0];
+            for(int i = 0; i < nums.length;  i++){
+                int value = nums[i];
+                int currMax = value;
 
-            for(int j = i + 1; j < nums.length; j++){
-                value = value + nums[j];
-                if(value > currMax){
-                    currMax = value;
+                for(int j = i + 1; j < nums.length; j++){
+                    value = value + nums[j];
+                    if(value > currMax){
+                        currMax = value;
+                    }
                 }
+                if(currMax > max) max = currMax;
             }
-            if(currMax > max) max = currMax;
+            return max;
+        }catch (IndexOutOfBoundsException e){
+            throw e;
         }
-        return max;
     }
 
     public static int maxSubArray2(int[] nums) {
@@ -60,5 +68,26 @@ class TestMaxSubArray {
     @Test
     public void testMaxSubArray(){
         int[] array = new int[] {-2,1,6,6,-10,-10,12,-1,-3};
+
+        TestCase.assertEquals(Easy53MaximumSubArray.maxSubArray(array), 13);
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testEmptyArrayInput(){
+        int[] array = new int[] {};
+
+        Easy53MaximumSubArray.maxSubArray(array);
+    }
+}
+
+class TestRunner {
+    public static void main(String[] args) {
+        Result result = JUnitCore.runClasses(TestMaxSubArray.class);
+
+        for (Failure failure : result.getFailures()) {
+            System.out.println(failure.toString());
+        }
+
+        System.out.println(result.wasSuccessful());
     }
 }

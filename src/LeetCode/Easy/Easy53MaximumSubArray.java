@@ -11,7 +11,7 @@
 
 package LeetCode.Easy;
 
-import java.util.Arrays;
+import org.junit.Test;
 
 public class Easy53MaximumSubArray {
     public static int maxSubArray(int[] nums) {
@@ -51,5 +51,14 @@ public class Easy53MaximumSubArray {
 
 //        System.out.println(maxSubArray(array));
         System.out.println(maxSubArray2(array));
+    }
+}
+
+
+class TestMaxSubArray {
+
+    @Test
+    public void testMaxSubArray(){
+        int[] array = new int[] {-2,1,6,6,-10,-10,12,-1,-3};
     }
 }

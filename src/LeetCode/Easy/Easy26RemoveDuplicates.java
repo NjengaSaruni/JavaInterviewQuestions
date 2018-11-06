@@ -40,16 +40,24 @@ public class Easy26RemoveDuplicates {
     public static int removeDuplicates(int[] nums) {
         int slow = 0;
         int fast = 1;
+
+        // Loop will not be entered for empty and one item arrays
         while(fast < nums.length){
+            // Increment fast counter if same value with previous
             if(nums[fast] == nums[fast-1]){
                 fast++;
-            }else{
+            }
+
+            // Assign next unique value to next index of slow
+            // Increment slow and keep searching
+            else{
                 nums[slow + 1] = nums[fast];
                 slow++;
                 fast++;
             }
         }
 
+        // Length is index plus one (Safe for empty array)
         return slow + 1;
     }
     public static void main(String[] args){

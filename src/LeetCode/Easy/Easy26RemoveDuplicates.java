@@ -38,10 +38,22 @@ import java.util.Arrays;
 
 public class Easy26RemoveDuplicates {
     public static int removeDuplicates(int[] nums) {
-        return 0;
+        int slow = 0;
+        int fast = 1;
+        while(fast < nums.length){
+            if(nums[fast] == nums[fast-1]){
+                fast++;
+            }else{
+                nums[slow + 1] = nums[fast];
+                slow++;
+                fast++;
+            }
+        }
+
+        return slow + 1;
     }
     public static void main(String[] args){
-        int[] array = new int[]{0, 1, 1, 1, 3, 5, 6, 6, 7};
+        int[] array = new int[]{};
         System.out.println(removeDuplicates(array));
         System.out.println(Arrays.toString(array));
     }

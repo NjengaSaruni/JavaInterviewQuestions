@@ -1,6 +1,6 @@
 package CrackingTheInterview;
 
-public class P1PatternMatching {
+public class P2PatternMatching {
 
     public static int minimum(int[] array, int left, int right){
         if(left == right){

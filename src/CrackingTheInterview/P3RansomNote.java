@@ -3,7 +3,7 @@ package CrackingTheInterview;
 import java.util.HashMap;
 import java.util.Map;
 
-public class P3RansonNote {
+public class P3RansomNote {
 
     public static boolean ransomable(String source, String note){
         Map<String, Integer> sourceMap =  new HashMap<>();

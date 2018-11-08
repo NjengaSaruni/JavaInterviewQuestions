@@ -14,10 +14,11 @@ public class P4BaseAndBuild {
             }else{
                 for(int j = 0; j < ls.size(); j++){
                     Character[] current = ls.get(j);
-                    Character[] construct = new Character[current.length + 1];
-                    ls.remove(current);
+                    System.out.printf("Current length is %d", current.length);
 
-                    for(int k = 0; k < construct.length; k++){
+
+                    for(int k = 0; k < current.length + 1; k++){
+                        Character[] construct = new Character[current.length + 1];
                         construct[k] = strchars[i];
 
                         int l = 0, m = 0;
@@ -30,9 +31,14 @@ public class P4BaseAndBuild {
                             l++;
                         }
 
+                        System.out.printf("Constructed is %s\n", construct);
+                        ls.add(construct);
+
                     }
-                    System.out.printf("Constructed is %s\n", construct);
-                    ls.add(construct);
+
+                    ls.remove(current);
+
+
 
                 }
             }

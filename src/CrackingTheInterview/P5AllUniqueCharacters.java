@@ -1,6 +1,6 @@
 package CrackingTheInterview;
 
-import java.util.Arrays;
+import java.util.*;
 
 public class P5AllUniqueCharacters {
     public static boolean allUnique(String str){
@@ -14,7 +14,18 @@ public class P5AllUniqueCharacters {
         return true;
     }
 
+    public static boolean allUniqueSet(String str){
+        char[] strchars = str.toCharArray();
+        Set<Character> set = new HashSet<>();
+
+        for(Character c: strchars){
+            if(set.contains(c)) return false;
+            set.add(c);
+        }
+        return true;
+    }
+
     public static void main(String[] args){
-        System.out.println(allUnique(""));
+        System.out.println(allUniqueSet("cde"));
     }
 }

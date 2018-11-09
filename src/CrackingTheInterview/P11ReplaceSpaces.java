@@ -1,6 +1,5 @@
 package CrackingTheInterview;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class P11ReplaceSpaces {

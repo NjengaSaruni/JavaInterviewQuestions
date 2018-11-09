@@ -22,9 +22,27 @@ public class P7RemoveDuplicates {
         }
     }
 
+    public static void removeDuplicates1(char[] str){
+        int[] available = new int[256];
+
+        int fast = 1;
+        int slow = 0;
+        available[str[0]] = 1;
+        while(fast < str.length){
+            if(available[str[fast]] == 0){
+                slow++;
+                str[slow] = str[fast];
+                available[str[slow]] = 1;
+            }
+            fast++;
+        }
+
+    }
+
+
     public static void main(String[] args){
-        char[] str = new char[] {};
-        removeDuplicates(str);
+        char[] str = new char[] {'1', '4' ,'4', 'a', 'b', '5', 'a', 'q', '4'};
+        removeDuplicates1(str);
         System.out.println(str);
     }
 }

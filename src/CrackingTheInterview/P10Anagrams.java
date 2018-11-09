@@ -17,6 +17,7 @@ public class P10Anagrams {
     private static boolean areAnagramsArrayASCII(String a, String b) {
         int[] valuesA = new int[256];
         int[] valuesB = new int[256];
+        int[] intValues = new int[a.length()];
 
         for(char charA: a.toCharArray()){
             valuesA[charA]++;
@@ -31,8 +32,8 @@ public class P10Anagrams {
 
     }
     public static void main(String[] args){
-        String a = "listen";
-        String b = "silen<t";
+        String a = "lisaat<en";
+        String b = "sileaan<t";
 
         System.out.println(areAnagramsArrayASCII(a, b));
 

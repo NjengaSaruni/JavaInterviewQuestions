@@ -10,9 +10,9 @@
 
         Given input matrix =
         [
-        [1,2,3],
-        [4,5,6],
-        [7,8,9]
+        [1,6,9],
+        [4,5,2],
+        [7,8,3]
         ],
 
         rotate the input matrix in-place such that it becomes:
@@ -66,6 +66,48 @@ import java.awt.desktop.SystemEventListener;
 import java.util.Arrays;
 
 public class RotateImage {
+    private static void recurse(int[][] array, int min, int max){
+        int rowA = max;
+        int colA = max;
+        int rowB = min;
+        int colB = max;
+
+        int temp;
+
+        while(rowA > min){
+            temp = array[rowA][colA];
+            array[rowA][colA] = array[rowB][colB];
+            array[rowB][colB] = temp;
+            rowA--;
+            colB--;
+        }
+
+        while(colA > min){
+            temp = array[rowA][colA];
+            array[rowA][colA] = array[rowB][colB];
+            array[rowB][colB] = temp;
+            colA --;
+            rowB ++;
+        }
+
+        while(rowA < max){
+            temp = array[rowA][colA];
+            array[rowA][colA] = array[rowB][colB];
+            array[rowB][colB] = temp;
+            rowA++;
+            colB++;
+        }
+
+        max -= 1;
+        min += 1;
+        if(max > min){
+            recurse(array, min, max);
+        }
+
+    }
+    public static void rotateRecursive(int[][] matrix){
+        recurse(matrix, 0, matrix[0].length - 1);
+    }
     public static void rotate(int[][] matrix) {
         int size = matrix[0].length;
 
@@ -90,7 +132,8 @@ public class RotateImage {
         }
 
         for(int x = 1; x <= size - 3; x++){
-            for(int y = 1; y <= size - 3; y++){
+            for(int y
+                = 1; y <= size - 3; y++){
                 hold = matrix[x][0];
                 matrix[x][0] = matrix[0][y];
                 matrix[0][y] = hold;
@@ -106,10 +149,11 @@ public class RotateImage {
         }
     }
     public static void main(String[] args){
-        int[][] matrix = new int[][]{{1,2,3},{4,5,6},{7,8,9}};
-        rotate(matrix);
-        System.out.print(Arrays.toString(matrix[0]));
-        System.out.print(Arrays.toString(matrix[1]));
-        System.out.print(Arrays.toString(matrix[2]));
+        int[][] matrix = new int[][]{{1,2,3,4},{5,6,7,8},{9, 10, 11, 12}, {13,14,15,16}};
+        rotateRecursive(matrix);
+        for(int[] array: matrix){
+            System.out.println(Arrays.toString(array));
+
+        }
     }
 }

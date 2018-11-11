@@ -22,12 +22,24 @@ public class P4BaseAndBuild {
 
         char[][] intermediate = permutations(str, index - 1);
         int row = 0;
+        int originalIndex = index;
         for(int i = 0; i < intermediate.length; i++){
             while(row < (intermediate[i].length + 1) * (i + 1)){
-                for(int j = index; j > 0; j--){
-
+                int col = intermediate[i].length;
+                int interCounter = intermediate[i].length - 1;
+                while(col >= 0){
+                    if(col == index){
+                        array[row][col] = str[index];
+                    }else{
+                        array[row][col] = intermediate[i][interCounter];
+                        interCounter--;
+                    }
+                    col--;
                 }
+                row++;
+                index --;
             }
+            index = originalIndex;
         }
 
         return array;

@@ -21,6 +21,9 @@ public class P4BaseAndBuild {
         }
 
         char[][] intermediate = permutations(str, index - 1);
+        for(char[] a: intermediate){
+            System.out.println(Arrays.toString(a));
+        }
         int row = 0;
         int originalIndex = index;
         for(int i = 0; i < intermediate.length; i++){
@@ -29,15 +32,17 @@ public class P4BaseAndBuild {
                 int interCounter = intermediate[i].length - 1;
                 while(col >= 0){
                     if(col == index){
-                        array[row][col] = str[index];
+                        System.out.printf("Index for row %d is %d\n", row, index);
+                        array[row][col] = str[originalIndex];
                     }else{
+                        System.out.printf("Intercounter for row %d is %d\n", row, interCounter);
                         array[row][col] = intermediate[i][interCounter];
                         interCounter--;
                     }
                     col--;
                 }
+                index--;
                 row++;
-                index --;
             }
             index = originalIndex;
         }

@@ -27,22 +27,25 @@
 
 package Combinatios;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 public class AsMany {
-    public static List<List<Integer>> combine(int n, int k) {
-        List<List<Integer>> answer = new ArrayList<List<Integer>>();
-
-        for(int i = 1; i <= n - 1;  i++){
-
+    public static int factorial(int n){
+        return 0;
+    }
+    public static int[][] combine(int n, int k) {
+        int[][] answer;
+        if(k == 1){
+            answer = new int[n][0];
         }
-
+        else {
+            answer = new int[n][k];
+        }
         return answer;
     }
 
     public static void main(String[] args){
-        for(List<Integer> arr: combine(4, 2)){
-            System.out.println(arr);
+        for(int[] arr: combine(4, 2)){
+            System.out.println(Arrays.toString(arr));
         }
     }
 }

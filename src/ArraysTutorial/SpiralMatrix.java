@@ -115,7 +115,7 @@ public class SpiralMatrix {
 //        for(int[] array: spiral(8)){
 //            System.out.println(Arrays.toString(array));
 //        1
-        for(int[] array: spiralRecursive(100)){
+        for(int[] array: spiralRecursive(4)){
             System.out.println(Arrays.toString(array));
         }
     }

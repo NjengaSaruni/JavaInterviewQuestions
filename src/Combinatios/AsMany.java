@@ -21,6 +21,8 @@
 
       []
 
+      Thought process: recursion
+
       */
 
 package Combinatios;

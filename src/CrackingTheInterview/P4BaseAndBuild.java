@@ -1,55 +1,43 @@
 package CrackingTheInterview;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class P4BaseAndBuild {
-    public static List<Character[]> permutations(String str){
-        List<Character[]> ls = new ArrayList<>();
-        char[] strchars = str.toCharArray();
+    public static int factorial(int i){
+        if(i <= 1){
+            return 1;
+        }else{
+            return i * factorial( i - 1);
+        }
+    }
+    public static char[][] permutations(char[] str, int index){
+        int rows = factorial(index + 1);
+        char[][] array = new char[rows][index + 1];
 
-        for(int i = 0; i < strchars.length; i++){
-            if(ls.isEmpty()){
-                ls.add(new Character[]{strchars[i]});
-            }else{
-                for(int j = 0; j < ls.size(); j++){
-                    Character[] current = ls.get(j);
-                    System.out.printf("Current length is %d", current.length);
+        if(index == 0){
+            array[0][0] = str[0];
+            return array;
+        }
 
-
-                    for(int k = 0; k < current.length + 1; k++){
-                        Character[] construct = new Character[current.length + 1];
-                        construct[k] = strchars[i];
-
-                        int l = 0, m = 0;
-                        while(l < construct.length){
-                            System.out.printf("Iteration %d\n", l);
-                            if(l != k) {
-                                construct[l] = current[m];
-                                m++;
-                            }
-                            l++;
-                        }
-
-                        System.out.printf("Constructed is %s\n", construct);
-                        ls.add(construct);
-
-                    }
-
-                    ls.remove(current);
-
-
+        char[][] intermediate = permutations(str, index - 1);
+        int row = 0;
+        for(int i = 0; i < intermediate.length; i++){
+            while(row < (intermediate[i].length + 1) * (i + 1)){
+                for(int j = index; j > 0; j--){
 
                 }
             }
         }
 
-        return ls;
+        return array;
+
     }
 
     public static void main(String[] args){
-        for(Character[] array: permutations("ab")){
-            System.out.printf("%s\t", array);
+        char[] arr = new char[]{'a', 'b', 'c'};
+        for(char[] array: permutations(arr, arr.length - 1)){
+            System.out.println(Arrays.toString(array));
         }
     }
 }

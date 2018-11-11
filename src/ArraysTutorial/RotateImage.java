@@ -62,7 +62,6 @@
         */
 package ArraysTutorial;
 
-import java.awt.desktop.SystemEventListener;
 import java.util.Arrays;
 
 public class RotateImage {

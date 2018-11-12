@@ -1,7 +1,6 @@
 package CrackingTheInterview;
 
 import java.util.Arrays;
-import java.util.List;
 
 public class P4BaseAndBuild {
     public static int factorial(int i){
@@ -32,10 +31,8 @@ public class P4BaseAndBuild {
                 int interCounter = intermediate[i].length - 1;
                 while(col >= 0){
                     if(col == index){
-                        System.out.printf("Index for row %d is %d\n", row, index);
                         array[row][col] = str[originalIndex];
                     }else{
-                        System.out.printf("Intercounter for row %d is %d\n", row, interCounter);
                         array[row][col] = intermediate[i][interCounter];
                         interCounter--;
                     }
@@ -52,7 +49,7 @@ public class P4BaseAndBuild {
     }
 
     public static void main(String[] args){
-        char[] arr = new char[]{'a', 'b', 'c'};
+        char[] arr = new char[]{'a', 'b', 'c', 'd'};
         for(char[] array: permutations(arr, arr.length - 1)){
             System.out.println(Arrays.toString(array));
         }

@@ -17,22 +17,41 @@ public class TraversalPreOrder {
         System.out.println(preorderTraversal(root));
         System.out.println(preorderTraversalIterative(root));
 
+        System.out.println(postorderTraversal(root));
+
+
     }
 
     public static List<Integer> preorderTraversal(TreeNode root) {
         List<Integer> list = new ArrayList<>();
 
-        traverse(root, list);
+        traversePreOrder(root, list);
 
         return list;
     }
 
 
-    private static void traverse(TreeNode node, List<Integer> list){
+    public static List<Integer> postorderTraversal(TreeNode root) {
+        List<Integer> list = new ArrayList<>();
+
+        traversePostOrder(root, list);
+
+        return list;
+    }
+
+    private static void traversePostOrder(TreeNode node, List<Integer> list){
+        if(node != null){
+            traversePostOrder(node.left, list);
+            list.add(node.val);
+            traversePostOrder(node.right, list);
+        }
+    }
+
+    private static void traversePreOrder(TreeNode node, List<Integer> list){
         if(node != null){
             list.add(node.val);
-            traverse(node.left, list);
-            traverse(node.right, list);
+            traversePreOrder(node.left, list);
+            traversePreOrder(node.right, list);
         }
     }
 

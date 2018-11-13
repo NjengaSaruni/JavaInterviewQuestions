@@ -2,18 +2,18 @@ package TreeTutorials;
 
 import Utils.TreeNode;
 
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Stack;
+import java.util.*;
 
 public class TraversalPreOrder {
     public static void main(String[] args){
-        TreeNode root = new TreeNode(5);
-        root.insert(5);
-        root.insert(9);
-        root.insert(0);
+        TreeNode root = new TreeNode(10);
         root.insert(8);
+        root.insert(19);
+        root.insert(20);
+        root.insert(18);
         root.insert(2);
+        root.insert(9);
+
 
         System.out.println(preorderTraversal(root));
         System.out.println(preorderTraversalIterative(root));
@@ -23,6 +23,10 @@ public class TraversalPreOrder {
 
         System.out.println(postorderTraversal(root));
 //        System.out.println(postorderTraversalIterative(root));
+
+        for(List<Integer> array: levelOrder(root)){
+            System.out.println(array);
+        }
 
 
     }
@@ -115,6 +119,31 @@ public class TraversalPreOrder {
                 stack.push(current.right);
             }
         }
+        return list;
+    }
+
+    public static List<List<Integer>> levelOrder(TreeNode root){
+        List<List<Integer>> list = new ArrayList<>();
+        Queue<TreeNode> queue = new ArrayDeque<>();
+
+        ((ArrayDeque<TreeNode>) queue).addLast(root);
+
+        while(!queue.isEmpty()){
+            List<Integer> levelList = new ArrayList<>();
+            for(TreeNode node: queue){
+                levelList.add(node.val);
+                if(node.left != null){
+                    ((ArrayDeque<TreeNode>) queue).addLast(node.left);
+                }
+                if(node.right != null){
+                    ((ArrayDeque<TreeNode>) queue).addLast(node.right);
+                }
+                ((ArrayDeque<TreeNode>) queue).removeFirst();
+            }
+
+            list.add(levelList);
+        }
+
         return list;
     }
 

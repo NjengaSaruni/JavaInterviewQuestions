@@ -6,7 +6,7 @@ import org.jetbrains.annotations.Contract;
 import java.util.*;
 
 public class TraversalPreOrder {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         TreeNode root = new TreeNode(10);
         root.insert(2);
         root.insert(31);
@@ -18,7 +18,7 @@ public class TraversalPreOrder {
         root.insert(11);
         root.insert(12);
 
-
+/*
         System.out.println(preorderTraversal(root));
         System.out.println(preorderTraversalIterative(root));
 
@@ -28,13 +28,13 @@ public class TraversalPreOrder {
         System.out.println(postorderTraversal(root));
 //        System.out.println(postorderTraversalIterative(root));
 
-        for(List<Integer> array: levelOrder(root)){
+        for (List<Integer> array : levelOrder(root)) {
             System.out.println(array);
         }
 
-        System.out.printf("Max height of tree is %d\n", maxDepth(root));
+        System.out.printf("Max height of tree is %d\n", maxDepth(root));*/
 
-        System.out.println(isSymmetric(root));
+        System.out.println(isSymmetricIterative(root));
 
     }
 
@@ -63,37 +63,38 @@ public class TraversalPreOrder {
         return list;
     }
 
-    private static void traverseInOrder(TreeNode node, List<Integer> list){
-        if(node != null){
+    private static void traverseInOrder(TreeNode node, List<Integer> list) {
+        if (node != null) {
             traverseInOrder(node.left, list);
             list.add(node.val);
             traverseInOrder(node.right, list);
         }
     }
 
-    private static void traversePreOrder(TreeNode node, List<Integer> list){
-        if(node != null){
+    private static void traversePreOrder(TreeNode node, List<Integer> list) {
+        if (node != null) {
             list.add(node.val);
             traversePreOrder(node.left, list);
             traversePreOrder(node.right, list);
         }
     }
 
-    private static void traversePostOrder(TreeNode node, List<Integer> list){
-        if(node != null){
+    private static void traversePostOrder(TreeNode node, List<Integer> list) {
+        if (node != null) {
             traversePostOrder(node.left, list);
             traversePostOrder(node.right, list);
             list.add(node.val);
         }
     }
-    public static List<Integer> preorderTraversalIterative(TreeNode root){
+
+    public static List<Integer> preorderTraversalIterative(TreeNode root) {
         List<Integer> list = new ArrayList<>();
         Stack<TreeNode> stack = new Stack<>();
         stack.push(root);
 
-        while(!stack.empty()){
+        while (!stack.empty()) {
             TreeNode current = stack.pop();
-            if(current != null){
+            if (current != null) {
                 list.add(current.val);
                 stack.push(current.right);
                 stack.push(current.left);
@@ -103,24 +104,23 @@ public class TraversalPreOrder {
         return list;
     }
 
-    public static List<Integer> inorderTraversalIterative(TreeNode root){
+    public static List<Integer> inorderTraversalIterative(TreeNode root) {
         Stack<TreeNode> stack = new Stack<>();
         List<Integer> list = new ArrayList<>();
         stack.push(root);
 
-        while(!stack.isEmpty()){
-            if(stack.peek() == null){
+        while (!stack.isEmpty()) {
+            if (stack.peek() == null) {
                 stack.pop();
-            }
-            else if(stack.peek().left != null) {
-                if (list.isEmpty() || stack.peek().left.val > list.get(list.size() - 1)){
+            } else if (stack.peek().left != null) {
+                if (list.isEmpty() || stack.peek().left.val > list.get(list.size() - 1)) {
                     stack.push(stack.peek().left);
-                }else {
+                } else {
                     TreeNode current = stack.pop();
                     list.add(current.val);
                     stack.push(current.right);
                 }
-            }else{
+            } else {
                 TreeNode current = stack.pop();
                 list.add(current.val);
                 stack.push(current.right);
@@ -129,22 +129,22 @@ public class TraversalPreOrder {
         return list;
     }
 
-    public static List<List<Integer>> levelOrder(TreeNode root){
+    public static List<List<Integer>> levelOrder(TreeNode root) {
         List<List<Integer>> list = new ArrayList<>();
         Queue<TreeNode> queue = new ArrayDeque<>();
 
-        if(root != null){
+        if (root != null) {
             queue.offer(root);
         }
 
-        while(!queue.isEmpty()){
+        while (!queue.isEmpty()) {
             List<Integer> levelList = new ArrayList<>();
             int size = queue.size();
-            for(int i = 0; i < size; i++){
+            for (int i = 0; i < size; i++) {
                 TreeNode node = queue.poll();
                 levelList.add(node.val);
-                if(node.left != null) queue.offer(node.left);
-                if(node.right != null) queue.offer(node.right);
+                if (node.left != null) queue.offer(node.left);
+                if (node.right != null) queue.offer(node.right);
             }
             list.add(levelList);
         }
@@ -152,33 +152,69 @@ public class TraversalPreOrder {
         return list;
     }
 
-    public static int maxDepth(TreeNode root){
-        return root == null ?  0:  1 + Math.max(maxDepth(root.left), maxDepth(root.right));
+    public static int maxDepth(TreeNode root) {
+        return root == null ? 0 : 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
     }
 
     @Contract("null, null -> true; null, !null -> false; !null, null -> false")
-    private static boolean areIdentical(TreeNode node1, TreeNode node2){
-        if(node1 == null && node2 == null){
+    private static boolean areIdentical(TreeNode node1, TreeNode node2) {
+        if (node1 == null && node2 == null) {
             return true;
-        }
-        else if(node1 == null || node2 == null){
+        } else if (node1 == null || node2 == null) {
             return false;
-        }else if(node1.val == node2.val){
-            return areIdentical(node1.left, node2.right) && areIdentical(node1.right , node2.left);
+        } else if (node1.val == node2.val) {
+            return areIdentical(node1.left, node2.right) && areIdentical(node1.right, node2.left);
         }
         return false;
     }
 
     @Contract("null -> true")
-    public static boolean isSymmetric(TreeNode root){
+    public static boolean isSymmetric(TreeNode root) {
         return areIdentical(root, root);
+    }
+
+    public static boolean isSymmetricIterative(TreeNode root) {
+        if (root == null) return false;
+        Stack<TreeNode> stackLeft = new Stack<>();
+        stackLeft.push(root.left);
+
+        Stack<TreeNode> stackRight = new Stack<>();
+        stackRight.push(root.right);
+
+        while (!stackLeft.isEmpty() && !stackRight.isEmpty()) {
+            if (stackLeft.peek() == null && stackRight.peek() == null) return true;
+            else if (stackLeft.peek() == null || stackRight.peek() == null) return false;
+            else if (stackLeft.peek().val == stackRight.peek().val) {
+                TreeNode left = stackLeft.pop();
+                TreeNode right = stackRight.pop();
+
+                if(left.right == null && right.left == null) {
+                    if(left.left == null && right.right == null) continue;
+                }
+                if(left.right == null || right.left == null) return false;
+                stackLeft.push(left.right);
+                stackLeft.push(right.left);
+
+                if(left.left == null && right.right == null) {
+                    continue;
+                }
+                if(left.left == null || right.right == null) return false;
+                stackRight.push(left.left);
+                stackRight.push(right.right);
+            }else{
+                return false;
+            }
+        }
+
+        return true;
+
     }
 
     class NodeSeen {
         TreeNode node;
         boolean seen;
 
-        NodeSeen(TreeNode node, boolean seen){
+        NodeSeen(TreeNode node, boolean seen) {
             this.node = node;
             this.seen = seen;
         }

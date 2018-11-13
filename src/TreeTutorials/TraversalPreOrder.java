@@ -13,12 +13,14 @@ public class TraversalPreOrder {
         root.insert(6);
         root.insert(9);
         root.insert(0);
+        root.insert(8);
+        root.insert(2);
 
         System.out.println(preorderTraversal(root));
         System.out.println(preorderTraversalIterative(root));
 
         System.out.println(postorderTraversal(root));
-
+        System.out.println(postorderTraversalIterative(root));
 
     }
 
@@ -69,6 +71,32 @@ public class TraversalPreOrder {
             }
         }
 
+        return list;
+    }
+
+    public static List<Integer> postorderTraversalIterative(TreeNode root){
+        Stack<TreeNode> stack = new Stack<>();
+        List<Integer> list = new ArrayList<>();
+        stack.push(root);
+
+        while(!stack.isEmpty()){
+            if(stack.peek() == null){
+                stack.pop();
+            }
+            else if(stack.peek().left != null) {
+                if (list.isEmpty() || stack.peek().left.val > list.get(list.size() - 1)){
+                    stack.push(stack.peek().left);
+                }else {
+                    TreeNode current = stack.pop();
+                    list.add(current.val);
+                    stack.push(current.right);
+                }
+            }else{
+                TreeNode current = stack.pop();
+                list.add(current.val);
+                stack.push(current.right);
+            }
+        }
         return list;
     }
 }

@@ -22,8 +22,7 @@ public class TraversalPreOrder {
         System.out.println(inorderTraversalIterative(root));
 
         System.out.println(postorderTraversal(root));
-        System.out.println(postorderTraversalIterative(root));
-
+//        System.out.println(postorderTraversalIterative(root));
 
 
     }
@@ -119,46 +118,13 @@ public class TraversalPreOrder {
         return list;
     }
 
-    public static List<Integer> postorderTraversalIterative(TreeNode root){
-        Stack<TreeNode> stack = new Stack<>();
-        List<Integer> list = new ArrayList<>();
-        stack.push(root);
-        TreeNode temp;
+    class NodeSeen {
+        TreeNode node;
+        boolean seen;
 
-        int i = 0;
-
-        while(!stack.isEmpty() && i < 100){
-            if(stack.peek().left != null){
-                if(!list.isEmpty()){
-                    if(list.get(list.size() - 1) == stack.peek().left.val){
-                        if(stack.peek().right != null){
-                            stack.push(stack.peek().right);
-                        }else{
-                            temp = stack.pop();
-                            list.add(temp.val);
-                        }
-                    }else if(stack.peek().val >= list.get(list.size() - 1)){
-                        stack.push(stack.peek().left);
-                    }else{
-                        temp = stack.pop();
-                        list.add(temp.val);
-                    }
-                }else{
-                    stack.push(stack.peek().left);
-                }
-            }else if(stack.peek().right != null){
-                if(!list.isEmpty()) {
-                    if (list.get(list.size() - 1) == stack.peek().right.val) {
-                        temp = stack.pop();
-                        list.add(temp.val);
-                    }
-                }
-            }else{
-                temp = stack.pop();
-                list.add(temp.val);
-            }
-            i++;
+        NodeSeen(TreeNode node, boolean seen){
+            this.node = node;
+            this.seen = seen;
         }
-        return list;
     }
 }

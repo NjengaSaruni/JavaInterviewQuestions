@@ -19,8 +19,8 @@ public class TraversalPreOrder {
         System.out.println(preorderTraversal(root));
         System.out.println(preorderTraversalIterative(root));
 
-        System.out.println(postorderTraversal(root));
-        System.out.println(postorderTraversalIterative(root));
+        System.out.println(inorderTraversal(root));
+        System.out.println(inorderTraversalIterative(root));
 
     }
 
@@ -33,19 +33,19 @@ public class TraversalPreOrder {
     }
 
 
-    public static List<Integer> postorderTraversal(TreeNode root) {
+    public static List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> list = new ArrayList<>();
 
-        traversePostOrder(root, list);
+        traverseInOrder(root, list);
 
         return list;
     }
 
-    private static void traversePostOrder(TreeNode node, List<Integer> list){
+    private static void traverseInOrder(TreeNode node, List<Integer> list){
         if(node != null){
-            traversePostOrder(node.left, list);
+            traverseInOrder(node.left, list);
             list.add(node.val);
-            traversePostOrder(node.right, list);
+            traverseInOrder(node.right, list);
         }
     }
 
@@ -74,7 +74,7 @@ public class TraversalPreOrder {
         return list;
     }
 
-    public static List<Integer> postorderTraversalIterative(TreeNode root){
+    public static List<Integer> inorderTraversalIterative(TreeNode root){
         Stack<TreeNode> stack = new Stack<>();
         List<Integer> list = new ArrayList<>();
         stack.push(root);

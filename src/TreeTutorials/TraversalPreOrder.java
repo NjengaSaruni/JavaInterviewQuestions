@@ -1,6 +1,7 @@
 package TreeTutorials;
 
 import Utils.TreeNode;
+import org.jetbrains.annotations.Contract;
 
 import java.util.*;
 
@@ -155,6 +156,7 @@ public class TraversalPreOrder {
         return root == null ?  0:  1 + Math.max(maxDepth(root.left), maxDepth(root.right));
     }
 
+    @Contract("null, null -> true; null, !null -> false; !null, null -> false")
     private static boolean areIdentical(TreeNode node1, TreeNode node2){
         if(node1 == null && node2 == null){
             return true;
@@ -167,6 +169,7 @@ public class TraversalPreOrder {
         return false;
     }
 
+    @Contract("null -> true")
     public static boolean isSymmetric(TreeNode root){
         return areIdentical(root, root);
     }

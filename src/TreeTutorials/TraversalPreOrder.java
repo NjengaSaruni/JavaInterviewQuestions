@@ -132,15 +132,19 @@ public class TraversalPreOrder {
 
         while(!queue.isEmpty()){
             List<Integer> levelList = new ArrayList<>();
-            TreeNode node = ((ArrayDeque<TreeNode>) queue).pop();
-            levelList.add(node.val);
-            if(node.left != null) queue.offer(node.left);
-            if(node.right != null) queue.offer(node.right);
+            int size = queue.size();
+            for(int i = 0; i < size; i++){
+                TreeNode node = queue.poll();
+                levelList.add(node.val);
+                if(node.left != null) queue.offer(node.left);
+                if(node.right != null) queue.offer(node.right);
+            }
             list.add(levelList);
         }
 
         return list;
     }
+
 
     class NodeSeen {
         TreeNode node;

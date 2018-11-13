@@ -13,6 +13,9 @@ public class TraversalPreOrder {
         root.insert(35);
         root.insert(4);
         root.insert(1);
+        root.insert(1);
+        root.insert(11);
+        root.insert(12);
 
 
         System.out.println(preorderTraversal(root));
@@ -28,6 +31,7 @@ public class TraversalPreOrder {
             System.out.println(array);
         }
 
+        System.out.printf("Max height of tree is %d\n", maxDepth(root));
 
     }
 
@@ -143,6 +147,13 @@ public class TraversalPreOrder {
         }
 
         return list;
+    }
+
+    public static int maxDepth(TreeNode root){
+        if(root == null){
+            return 0;
+        }
+        return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
     }
 
 

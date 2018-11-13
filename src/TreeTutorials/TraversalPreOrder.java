@@ -10,13 +10,6 @@ public class TraversalPreOrder {
         TreeNode root = new TreeNode(10);
         root.insert(2);
         root.insert(31);
-        root.insert(28);
-        root.insert(35);
-        root.insert(4);
-        root.insert(1);
-        root.insert(1);
-        root.insert(11);
-        root.insert(12);
 
 /*
         System.out.println(preorderTraversal(root));
@@ -34,7 +27,9 @@ public class TraversalPreOrder {
 
         System.out.printf("Max height of tree is %d\n", maxDepth(root));*/
 
-        System.out.println(isSymmetricIterative(root));
+//        System.out.println(isSymmetricIterative(root));
+
+        System.out.println(pathSum(root, 13));
 
     }
 
@@ -182,7 +177,10 @@ public class TraversalPreOrder {
         stackRight.push(root.right);
 
         while (!stackLeft.isEmpty() && !stackRight.isEmpty()) {
-            if (stackLeft.peek() == null && stackRight.peek() == null) return true;
+            if (stackLeft.peek() == null && stackRight.peek() == null){
+                stackLeft.pop();
+                stackRight.pop();
+            }
             else if (stackLeft.peek() == null || stackRight.peek() == null) return false;
             else if (stackLeft.peek().val == stackRight.peek().val) {
                 TreeNode left = stackLeft.pop();
@@ -208,6 +206,17 @@ public class TraversalPreOrder {
 
         return true;
 
+    }
+
+    public static boolean pathSum(TreeNode root, int sum){
+        if(root == null) {
+            return sum == 0;
+        }
+        return pathSum(root.left, sum - root.val) || pathSum(root.right, sum - root.val);
+    }
+
+    public static boolean hasPathSum(TreeNode root, int sum){
+        return root != null && pathSum(root, sum);
     }
 
     class NodeSeen {

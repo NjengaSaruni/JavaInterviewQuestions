@@ -33,6 +33,8 @@ public class TraversalPreOrder {
 
         System.out.printf("Max height of tree is %d\n", maxDepth(root));
 
+        System.out.println(isSymmetric(root));
+
     }
 
     public static List<Integer> preorderTraversal(TreeNode root) {
@@ -150,12 +152,24 @@ public class TraversalPreOrder {
     }
 
     public static int maxDepth(TreeNode root){
-        if(root == null){
-            return 0;
-        }
-        return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
+        return root == null ?  0:  1 + Math.max(maxDepth(root.left), maxDepth(root.right));
     }
 
+    private static boolean areIdentical(TreeNode node1, TreeNode node2){
+        if(node1 == null && node2 == null){
+            return true;
+        }
+        else if(node1 == null || node2 == null){
+            return false;
+        }else if(node1.val == node2.val){
+            return areIdentical(node1.left, node2.right) && areIdentical(node1.right , node2.left);
+        }
+        return false;
+    }
+
+    public static boolean isSymmetric(TreeNode root){
+        return areIdentical(root, root);
+    }
 
     class NodeSeen {
         TreeNode node;

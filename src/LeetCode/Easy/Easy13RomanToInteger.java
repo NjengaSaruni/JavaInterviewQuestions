@@ -42,32 +42,60 @@ Roman numerals are represented by seven different symbols: I, V, X, L, C, D and 
         Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.*/
 package LeetCode.Easy;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class Easy13RomanToInteger {
-    public int romanToInt(String s) {
-        Object[][] map = new Object[][]{
-                { 1, "I", },
-                { 4, "IV", },
-                { 5, "V", },
-                { 9, "IX", },
-                { 10, "X", },
-                { 40, "XL", },
-                { 50, "L", },
-                { 90, "XC", },
-                { 100, "C", },
-                { 400, "CD", },
-                { 500, "D", },
-                { 900, "CM", },
-                { 1000, "M", },
-        };
+    public static int romanToInt(String s) {
+        Map<Character, Integer> map = new HashMap<>();
+        map.put('I', 1);
+        map.put('V', 5);
+        map.put('X', 10);
+        map.put('L', 50);
+        map.put('C', 100);
+        map.put('D', 500);
+        map.put('M', 1000);
 
         int ans = 0;
-        for(int i = 0; i < s.length(); i++){
-            ans += s.charAt()
+        int i = 0;
+        while(i < s.length()){
+            char c = s.charAt(i);
+            if( i < s.length() - 1){
+                if(s.charAt(i) == 'I' && s.charAt(i + 1) == 'V') {
+                    System.out.println("Entered jere");
+                    ans+= 4;
+                    i+=2;
+                    continue;
+                }
+                else if(s.charAt(i) == 'I' && s.charAt(i + 1) == 'X') {
+                    ans += 9;
+                    i+=2;
+                    continue;
+                }else if(s.charAt(i) == 'X' && s.charAt(i + 1) == 'L'){
+                    ans+= 40;
+                    i+=2;
+                    continue;
+                }else if(s.charAt(i) == 'X' && s.charAt(i + 1) == 'C'){
+                    ans+= 90;
+                    i+=2;
+                    continue;
+                }else if(s.charAt(i) == 'C' && s.charAt(i + 1) == 'D'){
+                    ans+= 400;
+                    i+=2;
+                    continue;
+                }else if(s.charAt(i) == 'C' && s.charAt(i + 1) == 'M'){
+                    ans+= 900;
+                    i+=2;
+                    continue;
+                }
+            }
+            i+= 1;
+
+            ans += map.get(c);
         }
+        return ans;
     }
     public static void main(String[] args){
-
+        System.out.println(romanToInt("MDLIX"));
     }
 }

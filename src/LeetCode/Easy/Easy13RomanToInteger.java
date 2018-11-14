@@ -62,7 +62,6 @@ public class Easy13RomanToInteger {
             char c = s.charAt(i);
             if( i < s.length() - 1){
                 if(s.charAt(i) == 'I' && s.charAt(i + 1) == 'V') {
-                    System.out.println("Entered jere");
                     ans+= 4;
                     i+=2;
                     continue;

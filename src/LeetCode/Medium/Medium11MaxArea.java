@@ -41,9 +41,24 @@ public class Medium11MaxArea {
         return max;
     }
 
+    public static int maxAreaOptimal(int[] height) {
+        int maxarea = 0;
+        int left = 0;
+        int right = height.length - 1;
+
+        while (right > left) {
+            maxarea = Math.max(maxarea, Math.min(height[left], height[right]) * (right - left));
+            if (height[right] <= height[left]) right--;
+            else left++;
+        }
+
+        return maxarea;
+    }
+
     public static void main(String[] args){
-        int[] array =  new int[]{1, 1};
+        int[] array =  new int[]{1,1,1};
 
         System.out.println(maxArea(array));
+        System.out.println(maxAreaOptimal(array));
     }
 }

@@ -170,40 +170,16 @@ public class TraversalPreOrder {
 
     public static boolean isSymmetricIterative(TreeNode root) {
         if (root == null) return false;
-        Stack<TreeNode> stackLeft = new Stack<>();
-        stackLeft.push(root.left);
-
-        Stack<TreeNode> stackRight = new Stack<>();
-        stackRight.push(root.right);
-
-        while (!stackLeft.isEmpty() && !stackRight.isEmpty()) {
-            if (stackLeft.peek() == null && stackRight.peek() == null){
-                stackLeft.pop();
-                stackRight.pop();
+        TreeNode[] array = new TreeNode[]{root.left, root.right};
+        int left = 0;
+        int right = array.length - 1;
+        while(left < right){
+            if(array[left].val == array[right].val){
+                TreeNode[] innerArray = new TreeNode[(int)Math.pow(array.length, 2)];
             }
-            else if (stackLeft.peek() == null || stackRight.peek() == null) return false;
-            else if (stackLeft.peek().val == stackRight.peek().val) {
-                TreeNode left = stackLeft.pop();
-                TreeNode right = stackRight.pop();
-
-                if(left.right == null && right.left == null) {
-                    if(left.left == null && right.right == null) continue;
-                }
-                if(left.right == null || right.left == null) return false;
-                stackLeft.push(left.right);
-                stackLeft.push(right.left);
-
-                if(left.left == null && right.right == null) {
-                    continue;
-                }
-                if(left.left == null || right.right == null) return false;
-                stackRight.push(left.left);
-                stackRight.push(right.right);
-            }else{
-                return false;
-            }
+            right--;
+            left++;
         }
-
         return true;
 
     }

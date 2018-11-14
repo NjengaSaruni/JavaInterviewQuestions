@@ -46,7 +46,6 @@ package LeetCode.Medium;
 public class Medium12IntToRoman {
     public static String intToRoman(int num) {
         StringBuilder sb = new StringBuilder();
-
         if(num >= 1000){
             int mult = num / 1000;
             for(int i = 0; i < mult; i ++){
@@ -102,7 +101,7 @@ public class Medium12IntToRoman {
             sb.append("IX");
             return sb.toString();
         }
-        if(num >= 5){
+        else if(num >= 5){
             sb.append("V");
             sb.append(intToRoman(num % 5));
         }
@@ -110,17 +109,15 @@ public class Medium12IntToRoman {
             sb.append("IV");
             return sb.toString();
         }
-        else{
+        else if(num > 0){
             while (num > 0) {
                 sb.append("I");
                 num--;
             }
         }
         return sb.toString();
-
-
     }
     public static void main(String[] args){
-        System.out.println(intToRoman(30));
+        System.out.println(intToRoman(1994));
     }
 }

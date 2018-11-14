@@ -8,8 +8,8 @@ import java.util.*;
 public class TraversalPreOrder {
     public static void main(String[] args) {
         TreeNode root = new TreeNode(10);
-        root.insert(2);
-        root.insert(31);
+//        root.insert(2);
+//        root.insert(31);
 
 /*
         System.out.println(preorderTraversal(root));
@@ -27,7 +27,7 @@ public class TraversalPreOrder {
 
         System.out.printf("Max height of tree is %d\n", maxDepth(root));*/
 
-//        System.out.println(isSymmetricIterative(root));
+        System.out.println(isSymmetricIterative(root));
 
         System.out.println(pathSum(root, 13));
 
@@ -171,17 +171,34 @@ public class TraversalPreOrder {
     public static boolean isSymmetricIterative(TreeNode root) {
         if (root == null) return false;
         TreeNode[] array = new TreeNode[]{root.left, root.right};
-        int left = 0;
-        int right = array.length - 1;
-        while(left < right){
-            if(array[left].val == array[right].val){
-                TreeNode[] innerArray = new TreeNode[(int)Math.pow(array.length, 2)];
-            }
-            right--;
-            left++;
-        }
-        return true;
+        int nullCount = 0;
+        while(nullCount * 2 < array.length){
+            TreeNode[] innerArray = new TreeNode[array.length * 2];
+            int left = 0;
+            int right = array.length - 1;
 
+            while (left < right) {
+                if (array[left] == null && array[right] == null) {
+                    left++;
+                    right--;
+                    nullCount+= 2;
+                } else if (array[left] == null || array[right] == null) {
+                    return false;
+                } else if(array[left].val == array[right].val){
+                    innerArray[left * 2] = array[left].left;
+                    innerArray[left * 2 + 1] = array[left].right;
+                    innerArray[right * 2] = array[right].left;
+                    innerArray[right * 2 + 1] = array[right].right;
+                    left++;
+                    right--;
+                } else {
+                    return false;
+                }
+            }
+            array = innerArray;
+        }
+
+        return true;
     }
 
     public static boolean pathSum(TreeNode root, int sum){

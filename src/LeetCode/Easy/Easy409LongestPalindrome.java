@@ -1,8 +1,5 @@
 package LeetCode.Easy;
 
-import java.util.ArrayDeque;
-import java.util.Queue;
-
 public class Easy409LongestPalindrome {
     public static String longestPalindrome(String str){
         StringBuilder longest = new StringBuilder();

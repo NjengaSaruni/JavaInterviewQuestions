@@ -4,34 +4,15 @@ import Utils.ListNode;
 
 public class Easy21MergeTwoSortedLists {
     public static ListNode mergeTwoLists(ListNode l1, ListNode l2) {
-        ListNode temp = l1;
-        while(temp != null && temp.next != null){
-            temp = temp.next;
+        if(l1 == null) return l2;
+        if(l2 == null) return l1;
+        if(l1.val < l2.val){
+            l1.next = mergeTwoLists(l1.next, l2);
+            return l1;
+        } else{
+            l2.next = mergeTwoLists(l1, l2.next);
+            return l2;
         }
-
-        temp.next = l2;
-
-        System.out.println(l1);
-        ListNode prev1 = null;
-        ListNode prev2 = temp;
-        ListNode temp1 = l1;
-        ListNode temp2 = temp.next;
-
-        while(temp2 != null && temp1 != null){
-            if(temp2.val < temp1.val){
-                prev2.next = temp2.next;
-                temp2.next = temp1;
-                if(prev1 != null){
-                    prev1.next = temp2;
-                }
-                prev1 = temp2;
-                temp2 = temp2.next;
-            }
-            else {
-                temp1 = temp1.next;
-            }
-        }
-        return l2;
     }
 
     public static void main(String[] args){
@@ -40,9 +21,9 @@ public class Easy21MergeTwoSortedLists {
         l1.insert(7);
 
         ListNode l2 = new ListNode(0);
-        l1.insert(2);
-        l1.insert(6);
-        l1.insert(10);
+        l2.insert(2);
+        l2.insert(6);
+        l2.insert(10);
 
         System.out.println(mergeTwoLists(l1, l2));
     }

@@ -25,6 +25,8 @@
 
 package LinkedListsTutorial;
 
+import Utils.ListNode;
+
 import java.util.Random;
 
 public class DeleteNode {
@@ -81,24 +83,5 @@ public class DeleteNode {
         System.out.println(node);
         deleteDuplicates(node);
         System.out.println(node);
-    }
-}
-
-class ListNode {
-    int val;
-    ListNode next;
-    ListNode(int x) { val = x; }
-
-    @Override
-    public String toString() {
-        StringBuilder str = new StringBuilder();
-        ListNode currentNode = this;
-        while(currentNode != null){
-            str.append(currentNode.val).append(" => ");
-            currentNode = currentNode.next;
-        }
-
-        return str.toString() + "null";
-
     }
 }

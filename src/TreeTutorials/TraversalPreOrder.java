@@ -8,36 +8,42 @@ import java.util.*;
 public class TraversalPreOrder {
     public static void main(String[] args) {
         TreeNode root = new TreeNode(10);
-//        root.insert(2);
-//        root.insert(31);
+        root.insert(2);
+        root.insert(31);
+        root.insert(3);
+        root.insert(89);
+        root.insert(1);
 
-/*
+
         System.out.println(preorderTraversal(root));
-        System.out.println(preorderTraversalIterative(root));
+//        System.out.println(preorderTraversalIterative(root));
 
-        System.out.println(inorderTraversal(root));
-        System.out.println(inorderTraversalIterative(root));
+//        System.out.println(inorderTraversal(root));
+//        System.out.println(inorderTraversalIterative(root));
 
-        System.out.println(postorderTraversal(root));
+//        System.out.println(postorderTraversal(root));
 //        System.out.println(postorderTraversalIterative(root));
 
-        for (List<Integer> array : levelOrder(root)) {
-            System.out.println(array);
-        }
-
-        System.out.printf("Max height of tree is %d\n", maxDepth(root));*/
-
-        System.out.println(isSymmetricIterative(root));
-
-        System.out.println(pathSum(root, 13));
+//        for (List<Integer> array : levelOrder(root)) {
+//            System.out.println(array);
+//        }
+//
+//        System.out.printf("Max height of tree is %d\n", maxDepth(root));
+//
+//        System.out.println(isSymmetricIterative(root));
+//
+//        System.out.println(pathSum(root, 13));
 
     }
 
     public static List<Integer> preorderTraversal(TreeNode root) {
         List<Integer> list = new ArrayList<>();
-
-        traversePreOrder(root, list);
-
+        if(root == null){
+            return list;
+        }
+        list.addAll(preorderTraversal(root.left));
+        list.add(root.val);
+        list.addAll(preorderTraversal(root.right));
         return list;
     }
 
@@ -45,6 +51,7 @@ public class TraversalPreOrder {
     public static List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> list = new ArrayList<>();
 
+        list.add(root.val);
         traverseInOrder(root, list);
 
         return list;

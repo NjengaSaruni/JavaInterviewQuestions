@@ -22,7 +22,7 @@ public class CreateTreeFromSortedArray {
         return minimalTree(array, 0, array.length -  1);
     }
     public static void main(String[] args){
-        int[] array = new int[]{1};
+        int[] array = new int[]{1,2,4,5,6,7,8};
         TreeNode tree = minimalTree(array);
         System.out.println(tree);
     }

@@ -17,7 +17,7 @@ import java.util.List;
 
 public class Medium22GenerateParentheses {
     public List<String> generateParenthesis(int n) {
-
+        return null;
     }
 
     public static void main(String[] args){

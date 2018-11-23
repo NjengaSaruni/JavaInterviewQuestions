@@ -17,17 +17,15 @@
 //        1,1,5 → 1,5,1
 package LeetCode.Medium;
 
-import Utils.ListNode;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Medium31NextPermutation {
     public static List<List<Character>> permutations(String str, int index){
         List<List<Character>> array =  new ArrayList<>();
         if(index == str.length() - 1){
-            List<Character> base = new List<Character>{str.charAt(index)};
+            List<Character> base = new ArrayList<Character>();
+            base.add(str.charAt(index));
             array.add(base);
         }else {
             List<List<Character>> base = permutations(str, index - 1);

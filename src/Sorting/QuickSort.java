@@ -10,7 +10,7 @@ package Sorting;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.*;
+import java.util.Arrays;
 
 public class QuickSort {
     @Test
@@ -19,13 +19,13 @@ public class QuickSort {
         sort(array, 0, array.length -  1);
         System.out.println(Arrays.toString(array));
 
-//        Assert.assertArrayEquals(array, new int[]{0,1,2,3,3,4,5,8});
+        Assert.assertArrayEquals(array, new int[]{0,1,2,3,3,4,5,8});
     }
     private static void sort(int[] array, int left, int right){
         if(left >= right){
             return;
         }
-        int pivot = array[right];
+        int pivot = (array[right] + array[left] + array[(right + left) / 2]) / 3;
         int pIndex = left;
         int buffer;
         int rememberLeft = left;

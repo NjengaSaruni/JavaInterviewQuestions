@@ -23,7 +23,7 @@ import java.util.List;
 public class Medium31NextPermutation {
     public static List<List<Character>> permutations(String str, int index){
         List<List<Character>> oldArray =  new ArrayList<>();
-        if(index == 0) {
+        if(index <= 0) {
             List<Character> base = new ArrayList<>();
             base.add(str.charAt(index));
             oldArray.add(base);
@@ -35,14 +35,14 @@ public class Medium31NextPermutation {
 
         for(List<Character> oldRow: oldArray){
             int size = oldRow.size();
-            int newIterations = factorial(size + 1) / size;
             int newRowPointer = size;
-            for(int i = 0; i < newIterations ; i++){
+            for(int i = 0; i < factorial(oldRow.size() + 1) / oldRow.size(); i++){
                 List<Character> newRow = new ArrayList<>();
                 int oldRowIndex = 0;
                 for(int newRowIndex = 0; newRowIndex <= size; newRowIndex++){
-                    if(newRowIndex == newRowPointer) newRow.add(str.charAt(index));
-                    else{
+                    if(newRowIndex == newRowPointer){
+                        newRow.add(str.charAt(index));
+                    }else{
                         newRow.add(oldRow.get(oldRowIndex));
                         oldRowIndex++;
                     }
@@ -50,7 +50,7 @@ public class Medium31NextPermutation {
                 newArray.add(newRow);
                 newRowPointer--;
             }
-        }
+       }
         return newArray;
     }
 
@@ -66,7 +66,7 @@ public class Medium31NextPermutation {
     }
 
     public static void main(String[] args){
-        String str = "123";
+        String str = "";
         List<List<Character>> list =  permutations(str);
         for(List a: list){
             System.out.println(a);

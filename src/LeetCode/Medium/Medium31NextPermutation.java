@@ -22,25 +22,43 @@ import java.util.List;
 
 public class Medium31NextPermutation {
     public static List<List<Character>> permutations(String str, int index){
-        List<List<Character>> array =  new ArrayList<>();
-        if(index == str.length() - 1){
-            List<Character> base = new ArrayList<Character>();
+        List<List<Character>> oldArray =  new ArrayList<>();
+        if(index == 0) {
+            List<Character> base = new ArrayList<>();
             base.add(str.charAt(index));
-            array.add(base);
-        }else {
-            List<List<Character>> base = permutations(str, index - 1);
-            List<List<Character>> newbase = permutations(str, index - 1);
-            for(List<Character> characters: base){
-                for(int i = 0; i < characters.size(); i++){
-                    
-                }
-            }      
+            oldArray.add(base);
+            return oldArray;
         }
-        return array;
+        oldArray = permutations(str, index - 1);
+
+        List<List<Character>> newArray = new ArrayList<>();
+
+        for(List<Character> oldRow: oldArray){
+            int size = oldRow.size();
+            int newRowPointer = size;
+            for(int i = 0; i < factorial(oldRow.size() + 1) / oldRow.size(); i++){
+                List<Character> newRow = new ArrayList<>();
+                int oldRowIndex = 0;
+                for(int newRowIndex = 0; newRowIndex <= size; newRowIndex++){
+                    if(newRowIndex == newRowPointer){
+                        newRow.add(str.charAt(index));
+                    }else{
+                        newRow.add(oldRow.get(oldRowIndex));
+                        oldRowIndex++;
+                    }
+                }
+                newArray.add(newRow);
+                newRowPointer--;
+            }
+        }
+        return newArray;
+    }
+
+    public static int factorial(int i){
+        if(i == 1) return 1;
+        return i * factorial(i - 1);
     }
     public static List<List<Character>> permutations(String str){
-        List<List<Character>> list = new ArrayList<List<Character>>();
-
         return permutations(str, str.length() - 1);
     }
     public void nextPermutation(int[] nums) {
@@ -48,8 +66,9 @@ public class Medium31NextPermutation {
     }
 
     public static void main(String[] args){
-        String str = "1234";
-        for(List a: permutations(str)){
+        String str = "123";
+        List<List<Character>> list =  permutations(str);
+        for(List a: list){
             System.out.println(a);
         }
     }

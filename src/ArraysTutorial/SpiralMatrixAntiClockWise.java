@@ -51,7 +51,7 @@ public class SpiralMatrixAntiClockWise {
 
     }
     public static void main(String[] args){
-        for(int[] array: spiral(5)){
+        for(int[] array: spiral(77)){
            System.out.println(Arrays.toString(array));
         }
     }

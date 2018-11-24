@@ -15,8 +15,13 @@ public class GraphNode {
         this.visited = visited;
     }
 
-    public int getDistanceFromSource() {
-        return distanceFromSource;
+    public int getDistanceFromSource(){
+        return this.distanceFromSource;
+    }
+
+
+    public void setDistanceFromSource(int distance){
+        this.distanceFromSource = distance;
     }
 
     public ArrayList<GraphEdge> getEdges() {

@@ -5,6 +5,13 @@ public class TreeEdge {
     private int toNodeIndex;
     private int length;
 
+
+    public TreeEdge(int fromNodeIndex, int toNodeIndex, int length) {
+        this.fromNodeIndex = fromNodeIndex;
+        this.toNodeIndex = toNodeIndex;
+        this.length = length;
+    }
+
     public int getFromNodeIndex() {
         return fromNodeIndex;
     }

@@ -1,12 +1,12 @@
 package Utils;
 
-public class TreeEdge {
+public class GraphEdge {
     private int fromNodeIndex;
     private int toNodeIndex;
     private int length;
 
 
-    public TreeEdge(int fromNodeIndex, int toNodeIndex, int length) {
+    public GraphEdge(int fromNodeIndex, int toNodeIndex, int length) {
         this.fromNodeIndex = fromNodeIndex;
         this.toNodeIndex = toNodeIndex;
         this.length = length;

@@ -3,6 +3,8 @@ package Graphs;
 import Utils.GraphEdge;
 import Utils.GraphNode;
 
+import java.util.ArrayList;
+
 public class Graph {
     private GraphNode[] nodes;
     private int noOfNodes;
@@ -60,7 +62,7 @@ public class Graph {
         // visit every node
         for (int i = 0; i < this.nodes.length; i++) {
             // loop around the edges of current node
-            ArrayList<Edge> currentNodeEdges = this.nodes[nextNode].getEdges();
+            ArrayList<GraphEdge> currentNodeEdges = this.nodes[nextNode].getEdges();
             for (int joinedEdge = 0; joinedEdge < currentNodeEdges.size(); joinedEdge++) {
                 int neighbourIndex = currentNodeEdges.get(joinedEdge).getNeighbourIndex(nextNode);
                 // only if not visited
@@ -76,5 +78,27 @@ public class Graph {
             // next node must be with shortest distance
             nextNode = getNodeShortestDistanced();
         }
+    }
+
+    // display result
+    public void printResult() {
+        String output = "Number of nodes = " + this.noOfNodes;
+        output += "\nNumber of edges = " + this.noOfEdges;
+        for (int i = 0; i < this.nodes.length; i++) {
+            output += ("\nThe shortest distance from node 0 to node " + i + " is " + nodes[i].getDistanceFromSource());
+        }
+        System.out.println(output);
+    }
+    public GraphNode[] getNodes() {
+        return nodes;
+    }
+    public int getNoOfNodes() {
+        return noOfNodes;
+    }
+    public GraphEdge[] getEdges() {
+        return edges;
+    }
+    public int getNoOfEdges() {
+        return noOfEdges;
     }
 }

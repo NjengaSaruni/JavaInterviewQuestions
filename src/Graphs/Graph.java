@@ -23,11 +23,24 @@ public class Graph {
 
         this.noOfEdges = edges.length;
 
-
         for (int edgeToAdd = 0; edgeToAdd < this.noOfEdges; edgeToAdd++) {
             this.nodes[edges[edgeToAdd].getFromNodeIndex()].getEdges().add(edges[edgeToAdd]);
             this.nodes[edges[edgeToAdd].getToNodeIndex()].getEdges().add(edges[edgeToAdd]);
         }
+    }
+
+    public void addEdge(GraphEdge edge){
+        GraphEdge[] newEdges = new GraphEdge[this.noOfEdges + 1];
+        int i = 0;
+        while(i < this.noOfEdges){
+            newEdges[i] = this.getEdges()[i];
+            i++;
+        }
+        newEdges[i] = edge;
+        this.edges = newEdges;
+        this.noOfNodes = calculateNoOfNodes(edges);
+        this.nodes[edge.getFromNodeIndex()].getEdges().add(edge);
+        this.nodes[edge.getToNodeIndex()].getEdges().add(edge);
     }
 
     private int calculateNoOfNodes(GraphEdge[] edges) {
@@ -58,25 +71,25 @@ public class Graph {
     public void calculateShortestDistances() {
         // node 0 as source
         this.nodes[0].setDistanceFromSource(0);
-        int nextNode = 0;
+        int currentNode = 0;
         // visit every node
         for (int i = 0; i < this.nodes.length; i++) {
             // loop around the edges of current node
-            ArrayList<GraphEdge> currentNodeEdges = this.nodes[nextNode].getEdges();
-            for (int joinedEdge = 0; joinedEdge < currentNodeEdges.size(); joinedEdge++) {
-                int neighbourIndex = currentNodeEdges.get(joinedEdge).getNeighbourIndex(nextNode);
+            ArrayList<GraphEdge> currentNodeEdges = this.nodes[currentNode].getEdges();
+            for (int currentEdge = 0; currentEdge < currentNodeEdges.size(); currentEdge++) {
+                int neighbourIndex = currentNodeEdges.get(currentEdge).getNeighbourIndex(currentNode);
                 // only if not visited
                 if (!this.nodes[neighbourIndex].isVisited()) {
-                    int tentative = this.nodes[nextNode].getDistanceFromSource() + currentNodeEdges.get(joinedEdge).getLength();
+                    int tentative = this.nodes[currentNode].getDistanceFromSource() + currentNodeEdges.get(currentEdge).getLength();
                     if (tentative < nodes[neighbourIndex].getDistanceFromSource()) {
                         nodes[neighbourIndex].setDistanceFromSource(tentative);
                     }
                 }
             }
             // all neighbours checked so node visited
-            nodes[nextNode].setVisited(true);
+            nodes[currentNode].setVisited(true);
             // next node must be with shortest distance
-            nextNode = getNodeShortestDistanced();
+            currentNode = getNodeShortestDistanced();
         }
     }
 

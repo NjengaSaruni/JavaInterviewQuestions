@@ -35,14 +35,14 @@ public class Medium31NextPermutation {
 
         for(List<Character> oldRow: oldArray){
             int size = oldRow.size();
+            int newIterations = factorial(size + 1) / size;
             int newRowPointer = size;
-            for(int i = 0; i < factorial(oldRow.size() + 1) / oldRow.size(); i++){
+            for(int i = 0; i < newIterations ; i++){
                 List<Character> newRow = new ArrayList<>();
                 int oldRowIndex = 0;
                 for(int newRowIndex = 0; newRowIndex <= size; newRowIndex++){
-                    if(newRowIndex == newRowPointer){
-                        newRow.add(str.charAt(index));
-                    }else{
+                    if(newRowIndex == newRowPointer) newRow.add(str.charAt(index));
+                    else{
                         newRow.add(oldRow.get(oldRowIndex));
                         oldRowIndex++;
                     }

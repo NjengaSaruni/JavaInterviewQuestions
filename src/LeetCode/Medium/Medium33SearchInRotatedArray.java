@@ -37,6 +37,8 @@ public class Medium33SearchInRotatedArray {
                 return search(nums, target,mid + 1, right);
             }
         }
+
+        return -1;
     }
     public static int search(int[] nums, int target) {
         return search(nums, target, 0, nums.length - 1);

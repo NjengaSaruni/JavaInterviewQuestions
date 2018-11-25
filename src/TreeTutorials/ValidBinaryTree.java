@@ -33,6 +33,7 @@ public class ValidBinaryTree {
         if(root == null) return true;
         return isValidBST(root, root.val, root.val);
     }
+
     public static boolean isValidBST(TreeNode root, int max, int min) {
         if (root == null) return true;
         if (root.left != null && (root.left.val >= root.val || root.left.val > max)) return false;

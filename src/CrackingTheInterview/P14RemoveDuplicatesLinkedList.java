@@ -2,30 +2,52 @@ package CrackingTheInterview;
 
 import Utils.ListNode;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class P14RemoveDuplicatesLinkedList {
 
-    public static ListNode sort(ListNode head){
-        if(head.next == null){
+    public static ListNode sort(ListNode head) {
+        if (head.next == null) {
             return head;
         }
-        ListNode current = head;
-        ListNode cursor = head.next;
-        ListNode preCursor = head;
 
-        while(cursor != null){
-            if(cursor.val < current.val){
-                preCursor.next = cursor.next;
-                cursor.next = current;
-                if(current == head){
-                    head = cursor;
-                }
-                current = cursor;
-            }else {
-                preCursor = cursor;
-                cursor = cursor.next;
-            }
+        ListNode cursor = head.next;
+
+        int length = 1;
+        while (cursor != null) {
+            length++;
+            cursor = cursor.next;
         }
 
+        ListNode current = head;
+        ListNode beforeCurrent = null;
+        ListNode minNode = null;
+        ListNode beforeMinNode = null;
+
+        cursor = head.next;
+        int currentMin = Integer.MAX_VALUE;
+        for (int i = 0; i < length; i++) {
+            while (cursor != null) {
+                if (cursor.val < currentMin) {
+                    minNode = cursor;
+                }else if(minNode == null){
+                    beforeMinNode = cursor;
+                }
+                cursor = cursor.next;
+            }
+            if(minNode != null){
+                if(minNode.val < current.val){
+                    beforeMinNode.next = minNode.next;
+                    minNode.next = current.next;
+                    head = minNode;
+                    if(beforeCurrent != null){
+                        beforeCurrent.next = minNode;
+                    }
+                }
+            }
+            current = current.next;
+        }
         return head;
     }
 
@@ -36,7 +58,7 @@ public class P14RemoveDuplicatesLinkedList {
         node.insert( 0);
         node.insert( 1);
         node.insert( 1);
-        node.insert( 4);
+        node.insert( -1);
         ListNode node1 = sort(node);
 
         System.out.println(node1);

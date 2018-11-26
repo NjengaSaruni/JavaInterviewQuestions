@@ -14,7 +14,6 @@
 package LeetCode.Medium;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
 
@@ -58,7 +57,7 @@ public class Medium22GenerateParentheses {
     }
 
     public static void main(String[] args){
-        List<String> list = generateParenthesis(3);
+        List<String> list = generateParenthesis(5);
         System.out.println(list);
     }
 }

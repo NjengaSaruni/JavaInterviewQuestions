@@ -32,10 +32,9 @@ public class Medium22GenerateParentheses {
     }
     public static List<String> generateParenthesis(int n) {
         n *= 2;
-        String[] strs = new String[(int) Math.pow(2, n)];
         List<String> array = new ArrayList<>();
 
-        for(int i = strs.length - 1; i >= 0; i--){
+        for(int i = (int) Math.pow(2, n) - 1; i >= 0; i-=2){
             int value = (int) Math.pow(2, n - 1);
             int remainder = i;
             StringBuilder sb = new StringBuilder();
@@ -48,16 +47,15 @@ public class Medium22GenerateParentheses {
                 }
                 value /= 2;
             }
-            strs[i] = sb.toString();
-        }
-        for(String s: strs){
-            if(isValid(s)) array.add(s);
+            if(isValid(sb.toString())){
+                array.add(sb.toString());
+            }
         }
         return array;
     }
 
     public static void main(String[] args){
-        List<String> list = generateParenthesis(5);
+        List<String> list = generateParenthesis(3);
         System.out.println(list);
     }
 }

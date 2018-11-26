@@ -5,13 +5,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Permutations {
-    private static int factorial(int k){
-        if(k == 1) return 1;
-        return k * factorial(k - 1);
-    }
     public static List<Character[]> permutations(Character[] array){
         int arrayLength = array.length;
-        int rows = factorial(arrayLength);
 
         List<Character[]> answer = new ArrayList<>();
         if(arrayLength == 1){
@@ -31,7 +26,6 @@ public class Permutations {
             }
 
             List<Character[]> former = permutations(buffer);
-            int count = 0;
             for(Character[] characters: former){
                 Character[] newCharacters = new Character[arrayLength];
                 newCharacters[0] = array[i];
@@ -42,7 +36,6 @@ public class Permutations {
                     j++;
                 }
                 answer.add(newCharacters);
-                count++;
             }
         }
 

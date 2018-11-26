@@ -1,8 +1,6 @@
 package Combinatios;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class Permutations {
     public static List<Character[]> permutations(Character[] array){
@@ -14,35 +12,39 @@ public class Permutations {
             return answer;
         }
 
+        Set<Character> set = new HashSet<>();
         for(int i = 0; i < arrayLength; i++){
-            Character[] buffer = new Character[arrayLength - 1];
-            int k = 0;
+            if(!set.contains(array[i])){
+                Character[] buffer = new Character[arrayLength - 1];
+                int k = 0;
 
-            for(int j = 0; j < arrayLength; j++){
-                if(j != i){
-                    buffer[k] = array[j];
-                    k++;
+                for(int j = 0; j < arrayLength; j++){
+                    if(j != i){
+                        buffer[k] = array[j];
+                        k++;
+                    }
                 }
-            }
 
-            List<Character[]> former = permutations(buffer);
-            for(Character[] characters: former){
-                Character[] newCharacters = new Character[arrayLength];
-                newCharacters[0] = array[i];
-                int j = 1;
+                List<Character[]> former = permutations(buffer);
+                for(Character[] characters: former){
+                    Character[] newCharacters = new Character[arrayLength];
+                    newCharacters[0] = array[i];
+                    int j = 1;
 
-                while(j < newCharacters.length){
-                    newCharacters[j] = characters[j - 1];
-                    j++;
+                    while(j < newCharacters.length){
+                        newCharacters[j] = characters[j - 1];
+                        j++;
+                    }
+                    answer.add(newCharacters);
                 }
-                answer.add(newCharacters);
+                set.add(array[i]);
             }
         }
 
         return answer;
     }
     public static void main(String[] args){
-        List<Character[]> list = permutations(new Character[]{'1', '2', '3', '4'});
+        List<Character[]> list = permutations(new Character[]{'1', '3', '1'});
         for(Character[] characters: list){
             System.out.println(Arrays.toString(characters));
         }

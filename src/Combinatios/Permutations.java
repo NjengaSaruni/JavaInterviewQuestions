@@ -25,8 +25,8 @@ public class Permutations {
                     }
                 }
 
-                List<Character[]> former = permutations(buffer);
-                for(Character[] characters: former){
+
+                for(Character[] characters: permutations(buffer)){
                     Character[] newCharacters = new Character[arrayLength];
                     newCharacters[0] = array[i];
                     int j = 1;
@@ -44,7 +44,7 @@ public class Permutations {
         return answer;
     }
     public static void main(String[] args){
-        List<Character[]> list = permutations(new Character[]{'1', '3', '1'});
+        List<Character[]> list = permutations(new Character[]{65,66,67});
         for(Character[] characters: list){
             System.out.println(Arrays.toString(characters));
         }

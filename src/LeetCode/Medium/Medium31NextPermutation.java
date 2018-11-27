@@ -18,6 +18,7 @@
 package LeetCode.Medium;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Medium31NextPermutation {
@@ -61,15 +62,54 @@ public class Medium31NextPermutation {
     public static List<List<Character>> permutations(String str){
         return permutations(str, str.length() - 1);
     }
-    public void nextPermutation(int[] nums) {
+    public static void nextPermutation(int[] nums) {
+        int end = nums.length  - 1;
+        if(end == 0){
+            return;
+        }
+        if(nums[end] > nums[end - 1]){
+            swap(nums, end, end - 1);
+            return;
+        }
+        int i = end - 1;
+        while(i >= 0){
+            if(nums[i - 1] < nums[end - 1]){
+                if(nums[i - 1] < nums[end]){
+                    rotateRight(nums, i - 1, end);
+                    if(nums[end] < nums[end - 1]) swap(nums, end, end - 1);
+                    return;
+                }
+                else {
+                    rotateLeft(nums, i - 1, end);
+                    return;
+                }
+            }
+            i--;
+        }
+    }
 
+    private static void swap(int[] nums, int left, int right){
+        int temp = nums[left];
+        nums[left] = nums[right];
+        nums[right] = temp;
+    }
+
+    private static  void rotateRight(int nums[], int left, int right){
+        while(right > left){
+            swap(nums, right, right -1);
+            right--;
+        }
+    }
+    private static  void rotateLeft(int nums[], int left, int right){
+        while(left < right){
+            swap(nums, left, left + 1);
+            left++;
+        }
     }
 
     public static void main(String[] args){
-        String str = "";
-        List<List<Character>> list =  permutations(str);
-        for(List a: list){
-            System.out.println(a);
-        }
+        int[] nums = new int[]{2,6,5,4,1};
+        nextPermutation(nums);
+        System.out.println(Arrays.toString(nums));
     }
 }

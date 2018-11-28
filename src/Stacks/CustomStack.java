@@ -7,7 +7,7 @@ import java.util.Stack;
 public class CustomStack {
     List<Integer> stack = new ArrayList<>();
     Stack<Integer> mins = new Stack<>();
-    int head;
+    int head = -1;
 
     public void push(Integer value){
         stack.add(value);
@@ -28,7 +28,7 @@ public class CustomStack {
             mins.pop();
         }
         this.head -= 1;
-        return stack.get(head   -1);
+        return stack.get(head - 1);
     }
 
     public Integer peek(){
@@ -42,7 +42,11 @@ public class CustomStack {
         stack.push(3);
         stack.push(2);
         stack.push(-1);
+        stack.push(-5);
+        stack.push(10);
         System.out.println(stack.getMin());
+        stack.pop();
+        stack.pop();
         stack.pop();
         System.out.println(stack.getMin());
 

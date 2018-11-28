@@ -2,15 +2,16 @@ package TreeTutorials;
 
 public class Tester {
     public static void main(String[] args){
-        BinarySearchTree<Integer> tree = new BinarySearchTree<>();
 
-        tree.add(1);
-        tree.add(3);
-        tree.add(2);
-        tree.add(6);
-        tree.add(7);
-        tree.add(5);
-        tree.add(9);
+        AVLTreeRecursive<Integer> avlTree = new AVLTreeRecursive<>();
+
+        avlTree.insert(1);
+        avlTree.insert(2);
+        avlTree.insert(3);
+        avlTree.insert(6);
+        avlTree.insert(7);
+        avlTree.insert(5);
+        avlTree.insert(9);
 
     }
 }

@@ -70,7 +70,7 @@ public class Graph {
 
     public void calculateShortestDistances() {
         // node 0 as source
-        this.nodes[0].setDistanceFromSource(0);
+        this.nodes[3].setDistanceFromSource(0);
         int currentNode = 0;
         // visit every node
         for (int i = 0; i < this.nodes.length; i++) {

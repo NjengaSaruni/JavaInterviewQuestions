@@ -24,9 +24,9 @@ public class TraversalPreOrder {
 //        System.out.println(postorderTraversal(root));
 //        System.out.println(postorderTraversalIterative(root));
 
-//        for (List<Integer> array : levelOrder(root)) {
-//            System.out.println(array);
-//        }
+        for (List<Integer> array : levelOrder(root)) {
+            System.out.println(array);
+        }
 //
 //        System.out.printf("Max height of tree is %d\n", maxDepth(root));
 //

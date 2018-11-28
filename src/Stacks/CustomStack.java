@@ -2,11 +2,10 @@ package Stacks;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Stack;
 
-public class CustomStack {
+public class CustomStack<T> {
     List<Integer> stack = new ArrayList<>();
-    Stack<Integer> mins = new Stack<>();
+    CustomStack<Integer> mins;
     int head = -1;
 
     public void push(Integer value){
@@ -33,6 +32,10 @@ public class CustomStack {
 
     public Integer peek(){
         return stack.get(head);
+    }
+
+    public boolean isEmpty(){
+        return head == -1;
     }
 
     public static void main(String[] args){

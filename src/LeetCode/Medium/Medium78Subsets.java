@@ -27,8 +27,7 @@ public class Medium78Subsets {
 
         for(int i = 0; i < nums.length; i++){
             int j;
-            int k;
-            j = k = i;
+            j = i;
             List<Integer> list = new ArrayList<>();
 
             while(j < nums.length){
@@ -36,10 +35,17 @@ public class Medium78Subsets {
                 List<Integer> subset = new ArrayList<>(list);
                 answer.add(subset);
 
-                while(j - k >= 2 && j > i){
-                    List<Integer> subsetB = new ArrayList<>(list);
-                    subsetB.remove(j - 1);
-                    answer.add(subsetB);
+                int m = j;
+                while(m - i >= 2){
+                    subset = new ArrayList<>(list);
+                    subset.remove(m - i - 1);
+                    answer.add(subset);
+                    m--;
+                    if(m - i == 1){
+                        subset = new ArrayList<>(list);
+                        subset.remove(m - i - 1);
+                        answer.add(subset);
+                    }
                 }
                 j++;
             }

@@ -9,6 +9,8 @@ public class BSTree {
     private class Node {
         int value;
         Node left, right;
+        public int bf;
+        public int height;
 
         Node(int v){
             this.value = v;
@@ -24,15 +26,35 @@ public class BSTree {
         }
     }
 
+    private Node balance(Node node){
+        if(node.bf == -2){
+            if(node.left.bf <= 0){
+//                leftleftCase(node);
+            }else{
+//                leftRightCase(node);
+            }
+        }
+        if(node.bf == 2){
+            if(node.right.bf >= 0){
+//                rightRightCase(node);
+            }
+            else{
+//                rightLeftCase(node);
+            }
+        }
+    }
     private Node insert(int value, Node node){
         if(node == null){
             return new Node(value);
         }
         if(value < node.value){
             node.left = insert(value, node.left);
-        }else{
+        }
+        else{
             node.right = insert(value, node.right);
         }
+
+        update(node);
 
         return node;
     }
@@ -42,6 +64,14 @@ public class BSTree {
         else {
             remove(value, root);
         }
+    }
+
+    public void update(Node node){
+        int leftNodeHeight = (node.left == null) ? -1 : node.left.height;
+        int rightNodeHeight = (node.right == null) ? -1 : node.right.height;
+
+        node.height = 1 + Math.max(leftNodeHeight, rightNodeHeight);
+        node.bf = rightNodeHeight - leftNodeHeight;
     }
 
     private void remove(int value, Node node){

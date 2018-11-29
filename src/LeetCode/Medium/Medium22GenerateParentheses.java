@@ -28,7 +28,7 @@ public class Medium22GenerateParentheses {
         }
         return stack.isEmpty();
     }
-    public static Set<String> generateParenthesis(int n) {
+    public static List<String> generateParenthesis(int n) {
         n *= 2;
         Set<String> array = new HashSet<>();
 
@@ -56,11 +56,13 @@ public class Medium22GenerateParentheses {
             }
 
         }
-        return array;
+        List<String> arr = new ArrayList<>();
+        arr.addAll(array);
+        return arr;
     }
 
     public static void main(String[] args){
-        Set<String> list = generateParenthesis(1);
+        List<String> list = generateParenthesis(3);
         System.out.println(list);
     }
 }

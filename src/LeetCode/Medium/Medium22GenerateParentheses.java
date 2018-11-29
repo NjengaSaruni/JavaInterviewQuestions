@@ -13,9 +13,7 @@
 
 package LeetCode.Medium;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 public class Medium22GenerateParentheses {
     public static boolean isValid(String s){
@@ -30,32 +28,39 @@ public class Medium22GenerateParentheses {
         }
         return stack.isEmpty();
     }
-    public static List<String> generateParenthesis(int n) {
+    public static Set<String> generateParenthesis(int n) {
         n *= 2;
-        List<String> array = new ArrayList<>();
+        Set<String> array = new HashSet<>();
 
         for(int i = (int) Math.pow(2, n); i >= (int) Math.pow(2, n - 1); i-=2){
             int value = (int) Math.pow(2, n - 1);
             int remainder = i;
+            int numA = 0;
+            int numB = 0;
             StringBuilder sb = new StringBuilder();
             while(value > 0){
-                if(remainder >= value){
+                if(remainder >= value && numA < n / 2){
                     sb.append('(');
+                    numA++;
                     remainder = i % value;
-                }else{
+                }else if(numB < numA){
                     sb.append(')');
+                    numB++;
+                }else{
+                    break;
                 }
                 value /= 2;
             }
-            if(isValid(sb.toString())){
+            if(sb.toString().length() == n && !array.contains(sb.toString())){
                 array.add(sb.toString());
             }
+
         }
         return array;
     }
 
     public static void main(String[] args){
-        List<String> list = generateParenthesis(3);
+        Set<String> list = generateParenthesis(1);
         System.out.println(list);
     }
 }

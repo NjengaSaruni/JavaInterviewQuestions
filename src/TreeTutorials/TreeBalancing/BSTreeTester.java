@@ -12,5 +12,10 @@ public class BSTreeTester {
         tree.insert(18);
 
         System.out.println(tree);
+
+        tree.remove(1);
+
+        System.out.println(tree);
+
     }
 }

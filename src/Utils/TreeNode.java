@@ -23,9 +23,8 @@ public class TreeNode {
                     this.right = new TreeNode(val);
                }
           }else{
-               if(this.left != null){
-                    this.left.insert(val);
-               }else{
+               if(this.left != null) this.left.insert(val);
+               else{
                     this.left = new TreeNode(val);
                }
           }

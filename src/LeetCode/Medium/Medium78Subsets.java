@@ -30,8 +30,7 @@ public class Medium78Subsets {
             List<Integer> list = new ArrayList<>();
             while(j < nums.length){
                 list.add(nums[j]);
-                List<Integer> subset = new ArrayList<>();
-                subset.addAll(list);
+                List<Integer> subset = new ArrayList<>(list);
                 answer.add(subset);
                 j++;
             }

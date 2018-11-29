@@ -41,24 +41,23 @@ public class BSTree {
 
         update(node);
 
-        return balance(node);
+        node = balance(node);
+
+        return node;
     }
 
     private Node balance(Node node){
         if(node.bf == -2){
             if(node.left.bf <= 0){
-                leftleftCase(node);
-            }else{
-                leftRightCase(node);
+                return leftleftCase(node);
             }
+            return leftRightCase(node);
         }
         if(node.bf == 2){
             if(node.right.bf >= 0){
-                rightRightCase(node);
+                return rightRightCase(node);
             }
-            else{
-                rightLeftCase(node);
-            }
+            return rightLeftCase(node);
         }
 
         return node;

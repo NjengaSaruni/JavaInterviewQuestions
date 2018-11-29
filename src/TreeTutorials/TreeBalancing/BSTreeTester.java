@@ -1,5 +1,7 @@
 package TreeTutorials.TreeBalancing;
 
+import TreeTutorials.AVLTreeRecursive;
+
 public class BSTreeTester {
     public static void main(String[] args){
         BSTree tree = new BSTree();

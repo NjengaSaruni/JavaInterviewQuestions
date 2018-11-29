@@ -1,7 +1,5 @@
 package LeetCode.Medium;
 
-import java.util.Stack;
-
 public class Medium931Parentheses {
     public static int parentheses(String string){
         int openCount = 0;

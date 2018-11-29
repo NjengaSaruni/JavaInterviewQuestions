@@ -24,6 +24,7 @@ public class BSTree {
         }else {
             root = insert(value, root);
         }
+        System.out.println("here");
     }
 
 

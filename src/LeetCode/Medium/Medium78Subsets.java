@@ -5,19 +5,43 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Medium78Subsets {
-    public List<List<Integer>> subsets(int[] nums) {
+    public static List<List<Integer>> subsets(int[] nums) {
         List<List<Integer>> list = new ArrayList<>();
         Arrays.sort(nums);
         backtrack(list, new ArrayList<>(), nums, 0);
         return list;
     }
 
-    private void backtrack(List<List<Integer>> list , List<Integer> tempList, int [] nums, int start){
+    private  static void backtrack(List<List<Integer>> list , List<Integer> tempList, int [] nums, int start){
         list.add(new ArrayList<>(tempList));
         for(int i = start; i < nums.length; i++){
             tempList.add(nums[i]);
             backtrack(list, tempList, nums, i + 1);
             tempList.remove(tempList.size() - 1);
+        }
+    }
+
+    public static List<List<Integer>> subsetsIterative(int[] nums){
+        List<List<Integer>> answer = new ArrayList<>();
+        answer.add(new ArrayList<>());
+
+        for(int i = 0; i < nums.length; i++){
+            int j = i;
+            List<Integer> list = new ArrayList<>();
+            while(j < nums.length){
+                list.add(nums[j]);
+                List<Integer> subset = new ArrayList<>();
+                subset.addAll(list);
+                answer.add(subset);
+                j++;
+            }
+        }
+
+        return answer;
+    }
+    public static void main(String[] args){
+        for(List<Integer> ls: subsetsIterative(new int[]{1,2,3})){
+            System.out.println(ls);
         }
     }
 }

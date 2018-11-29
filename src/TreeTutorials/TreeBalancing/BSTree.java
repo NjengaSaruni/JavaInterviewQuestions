@@ -22,27 +22,11 @@ public class BSTree {
         if(root == null){
             root = node;
         }else {
-            insert(value, root);
+            root = insert(value, root);
         }
     }
 
-    private Node balance(Node node){
-        if(node.bf == -2){
-            if(node.left.bf <= 0){
-//                leftleftCase(node);
-            }else{
-//                leftRightCase(node);
-            }
-        }
-        if(node.bf == 2){
-            if(node.right.bf >= 0){
-//                rightRightCase(node);
-            }
-            else{
-//                rightLeftCase(node);
-            }
-        }
-    }
+
     private Node insert(int value, Node node){
         if(node == null){
             return new Node(value);
@@ -56,7 +40,65 @@ public class BSTree {
 
         update(node);
 
+        return balance(node);
+    }
+
+    private Node balance(Node node){
+        if(node.bf == -2){
+            if(node.left.bf <= 0){
+                leftleftCase(node);
+            }else{
+                leftRightCase(node);
+            }
+        }
+        if(node.bf == 2){
+            if(node.right.bf >= 0){
+                rightRightCase(node);
+            }
+            else{
+                rightLeftCase(node);
+            }
+        }
+
         return node;
+    }
+
+    private Node leftleftCase(Node node){
+        return rightRotate(node);
+    }
+
+    private Node rightRightCase(Node node){
+        return leftRotate(node);
+    }
+
+    private Node leftRightCase(Node node){
+        node.left = leftRotate(node.left);
+        return rightRightCase(node);
+    }
+
+    private Node rightLeftCase(Node node){
+        node.right = rightRotate(node.right);
+        return leftleftCase(node);
+    }
+
+    private Node rightRotate(Node node){
+        Node newParent = node.left;
+        node.left = newParent.right;
+        newParent.right = node;
+        update(node);
+        update(newParent);
+
+        return newParent;
+    }
+
+    private Node leftRotate(Node node) {
+        Node newParent = node.right;
+        node.right = newParent.left;
+        newParent.left = node;
+        update(node);
+        update(newParent);
+
+        return newParent;
     }
 
     public void remove(int value){

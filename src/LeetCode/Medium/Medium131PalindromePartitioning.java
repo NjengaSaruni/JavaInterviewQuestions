@@ -13,10 +13,7 @@
 //
         package LeetCode.Medium;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Medium131PalindromePartitioning {
 
@@ -67,6 +64,7 @@ public class Medium131PalindromePartitioning {
                 List<String> subPartitions = new ArrayList<>();
                 subPartitions.addAll(list);
                 subPartitions.add(a);
+                Collections.sort(subPartitions);
                 if(!set.contains(subPartitions)){
                     set.add(subPartitions);
                 }
@@ -86,7 +84,7 @@ public class Medium131PalindromePartitioning {
         return true;
     }
     public static void main(String[] args){
-        for(List<String> list: partition("aab")){
+        for(List<String> list: partition("bb")){
             System.out.println(list);
         }
     }

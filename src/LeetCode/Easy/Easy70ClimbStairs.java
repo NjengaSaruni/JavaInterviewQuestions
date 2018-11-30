@@ -16,13 +16,19 @@ public class Easy70ClimbStairs {
         return a + b;
     }
     public static int climbStairs(int n){
-        Map<Integer, Integer> map = new HashMap<>();
-        map.put(1, 1);
-        map.put(2, 2);
+        int a = 1;
+        int b = 1;
+        int i = 1;
+        while(i < n){
+            int temp = b;
+            b = a + b;
+            a = temp;
+            i++;
+        }
 
-        return climbStairs(n, map);
+        return b;
     }
     public static void main(String[] args){
-        System.out.println(climbStairs(38));
+        System.out.println(climbStairs(5));
     }
 }

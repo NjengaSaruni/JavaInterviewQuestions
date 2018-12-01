@@ -11,8 +11,8 @@ public class Easy70ClimbStairs {
         int a = climbStairs(n - 1, map);
         map.put(n - 1 , a);
         int b = climbStairs(n - 2, map);
-        map.put(n , a + b);
         map.put(n - 2, b);
+        map.put(n , a + b);
         return a + b;
     }
     public static int climbStairs(int n) {
@@ -37,6 +37,6 @@ public class Easy70ClimbStairs {
         return b;
     }
     public static void main(String[] args){
-        System.out.println(climbStairs(38));
+        System.out.println(climbStairs(5));
     }
 }

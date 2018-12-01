@@ -13,5 +13,7 @@ public class Tester {
         avlTree.insert(5);
         avlTree.insert(9);
 
+        System.out.println(avlTree);
+
     }
 }

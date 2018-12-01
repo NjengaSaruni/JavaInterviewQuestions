@@ -19,7 +19,7 @@ package LeetCode.Medium;
 
 public class Medium409LongestPalindrome {
     public static int longestPalindrome(String s){
-        int[] members = new int[256];
+        int[] members = new int[128];
         boolean pivot = false;
         for(char c: s.toCharArray()) members[c] += 1;
 

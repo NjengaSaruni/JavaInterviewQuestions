@@ -61,8 +61,29 @@ public class Medium22GenerateParentheses {
         return arr;
     }
 
+    public static List<String> betterGenerate(int n){
+        List<String> list = new ArrayList<>();
+
+        if(n == 1){
+            list.add("()");
+            return list;
+        }
+
+        List<String> former = betterGenerate(n -  1);
+        list.add(former.get(0) + "()");
+        list.add("(" + former.get(0) + ")");
+
+        for(int i = 1; i < former.size(); i++){
+            list.add("()" + former.get(i));
+            list.add(former.get(i) + "()");
+            list.add("(" + former.get(i) + ")");
+        }
+
+        return list;
+    }
+
     public static void main(String[] args){
-        List<String> list = generateParenthesis(3);
+        List<String> list = betterGenerate(4);
         System.out.println(list);
     }
 }

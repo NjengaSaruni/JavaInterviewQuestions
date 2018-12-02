@@ -55,7 +55,7 @@ public class Medium78Subsets {
         return answer;
     }
     public static void main(String[] args){
-        for(List<Integer> ls: subsetsIterative(new int[]{1,2,3,4})){
+        for(List<Integer> ls: subsets(new int[]{1,2,3,4})){
             System.out.println(ls);
         }
     }

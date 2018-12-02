@@ -3,7 +3,9 @@ package Graphs;
 import Utils.GraphEdge;
 import Utils.GraphNode;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Queue;
 
 public class Graph {
     private GraphNode[] nodes;
@@ -43,6 +45,21 @@ public class Graph {
         this.nodes[edge.getToNodeIndex()].getEdges().add(edge);
     }
 
+    public boolean isCyclic(){
+        Queue<GraphNode> nodeQueue = new ArrayDeque<GraphNode>();
+
+        nodeQueue.offer(this.nodes[0]);
+        while(!nodeQueue.isEmpty()){
+            GraphNode node = nodeQueue.poll();
+            if(node.isVisited()) return true;
+            node.setVisited(true);
+            for(GraphEdge edge: node.getEdges()){
+                GraphNode nodeToAdd = this.nodes[edge.getToNodeIndex()];
+                if(nodeToAdd != node && !nodeQueue.contains(nodeToAdd)) nodeQueue.offer(nodeToAdd);
+            }
+        }
+        return false;
+    }
     private int calculateNoOfNodes(GraphEdge[] edges) {
         int noOfNodes = 0;
         for (GraphEdge e : edges) {
@@ -70,7 +87,7 @@ public class Graph {
 
     public void calculateShortestDistances() {
         // node 0 as source
-        this.nodes[3].setDistanceFromSource(0);
+        this.nodes[0].setDistanceFromSource(0);
         int currentNode = 0;
         // visit every node
         for (int i = 0; i < this.nodes.length; i++) {

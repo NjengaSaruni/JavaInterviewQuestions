@@ -109,7 +109,6 @@ public class Medium31NextPermutation {
 
     public static void main(String[] args){
         int[] nums = new int[]{2,6,5,4,1};
-        nextPermutation(nums);
-        System.out.println(Arrays.toString(nums));
+        permutations("abcd");
     }
 }

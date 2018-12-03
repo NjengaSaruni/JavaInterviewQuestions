@@ -25,6 +25,7 @@ public class BacktrackABC {
         list.add('a');
         list.add('b');
         list.add('c');
+        list.add('c');
 
         for(List<Character> ls: subsetArray(list)){
             System.out.println(ls);

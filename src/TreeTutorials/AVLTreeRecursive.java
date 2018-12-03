@@ -118,7 +118,7 @@ public class AVLTreeRecursive <T extends Comparable<T>> implements Iterable<T> {
 
         // Insert node in left subtree.
         if (cmp < 0) {
-            node.left = insert(node.left, value);;
+            node.left = insert(node.left, value);
 
             // Insert node in right subtree.
         } else {

@@ -7,7 +7,7 @@ public class Folds {
     public static List<Boolean> foldsRecursive(int n){
         List<Boolean> list = new ArrayList<>();
 
-        if(n == 1){git a
+        if(n == 1){
             list.add(false);
             return list;
         }
